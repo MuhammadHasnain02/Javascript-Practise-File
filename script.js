@@ -797,12 +797,12 @@
 // Chapter # 25 Strings: Replacing characters
 // ---------------------------------------
 
-// 1 [one word]
+// 1 [one letter]
 // let word = "banana";
 // let newWord = word.replace("a", "o");
 // console.log(newWord);  // Output: "bonana"
 
-// 2 [one letter]
+// 2 [one word]
 // let sentence = "I love Python";
 // let updated = sentence.replace("Python", "JavaScript");
 // console.log(updated);  // Output: "I love JavaScript"
@@ -3186,102 +3186,212 @@
 
 
 // ---------------------------------------
-// Chapter # 69
+// Chapter # 69 [Objects]
 // ---------------------------------------
 
-// 1 []
+// 1 [syntax]
+// let person = {
+//   name: "Hasnain",
+//   age: 22,
+//   city: "Karachi"
+// };
 
+// ---------------------------------------
+// Chapter # 70 [Objects: Properties]
+// ---------------------------------------
 
-// 2 []
+// 1 [Accessing Object Properties]
+// console.log(person.name);    // dot notation
+// console.log(person["age"]);  // bracket notation
 
+// 2 [Adding & Updating Values]
+// person.country = "Pakistan";   // new property add
+// person.age = 23;               // update property
 
-// 3 []
+// 3 [Deleting Property]
+// delete person.city;
+// console.log(person);
 
+// 4 [Check if Property Exists]
+// console.log("name" in person);   // true
+// console.log("salary" in person); // false
+
+// ---------------------------------------
+// Chapter # 71 [Objects: Methods]
+// ---------------------------------------
+
+// 1 [Basic Method]
+// let person = {
+//   name: "Hasnain",
+//   age: 22,
+
+//   // Method
+//   greet: function () {
+//     return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+//   }
+// }
+
+// 2 [Short Method Syntax (ES6+)]
+// let person = {
+//   name: "Ali",
+//   sayHi() {
+//     console.log(`Hi, ${this.name}!`);
+//   }
+// };
+
+// person.sayHi();  // Hi, Ali!
+
+// 3 [Object.keys(obj)]
+// let car = { brand: "Toyota", model: "Corolla", year: 2020 };
+// console.log(Object.keys(car));  // ["brand", "model", "year"]
+
+// 4 [Object.values(obj)]
+// let car = { brand: "Toyota", model: "Corolla", year: 2020 };
+// console.log(Object.values(car)); //["Toyota", "Corolla", 2020]
+
+// 5 [Object.entries(obj)]
+// let car = { brand: "Toyota", model: "Corolla", year: 2020 };
+// console.log(Object.entries(car)); // [["brand", "Toyota"], ["model", "Corolla"], ["year", 2020]]
+
+// 6 [Object.assign(target, source)]
+// let obj1 = { a: 1 };
+// let obj2 = { b: 2 };
+// let merged = Object.assign({}, obj1, obj2);
+
+// console.log(merged); // { a: 1, b: 2 }
+
+// 7 [Object.freeze(obj)]
+// let user = { id: 101, role: "admin" };
+// Object.freeze(user);
+// user.role = "user";  // change nahi hoga
+// console.log(user);   // { id: 101, role: "admin" }
+
+// 8 [Object.seal(obj)]
+// let stu = { name: "Sara", age: 20 };
+// Object.seal(stu);
+// stu.age = 21;        // update hoga
+// delete stu.name;     // delete nahi hoga
+// console.log(stu);    // { name: "Sara", age: 21 }
+
+// ---------------------------------------
+// Chapter # 72 [Objects: Constructors]
+// ---------------------------------------
+
+// 1 [Basic Constructor Function Syntax]
+// function Person(name, age) {
+//   this.name = name;   // property
+//   this.age = age;     // property
+
+//   this.greet = function() {   // method
+//     console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+//   };
+// }
+
+// // New objects banane ke liye "new" keyword use hota hai
+// let person1 = new Person("Hasnain", 22);
+// let person2 = new Person("Ali", 25);
+
+// person1.greet();  // Hello, my name is Hasnain and I am 22 years old.
+// person2.greet();  // Hello, my name is Ali and I am 25 years old.
+
+// 2 [Constructor with Prototype]
+// function Car(brand, model) {
+//   this.brand = brand;
+//   this.model = model;
+// }
+
+// // method ko prototype par add karna best practice hai
+// Car.prototype.start = function() {
+//   console.log(`${this.brand} ${this.model} is starting...`);
+// };
+
+// let car1 = new Car("Toyota", "Corolla");
+// let car2 = new Car("Honda", "Civic");
+
+// car1.start();  // Toyota Corolla is starting...
+// car2.start();  // Honda Civic is starting...
+
+// 3 [Constructor using ES6 Class (Modern Way)]
+// class Student {
+//   constructor(name, roll) {
+//     this.name = name;
+//     this.roll = roll;
+//   }
+
+//   // method
+//   display() {
+//     console.log(`Student: ${this.name}, Roll No: ${this.roll}`);
+//   }
+// }
+
+// let s1 = new Student("Sara", 101);
+// let s2 = new Student("Ahmed", 102);
+
+// s1.display();  // Student: Sara, Roll No: 101
+// s2.display();  // Student: Ahmed, Roll No: 102
+
+// ---------------------------------------
+// Chapter # 73 [Objects: Constructors for methods]
+// ---------------------------------------
+
+// 1 [Constructor with Methods (Direct Inside Function)]
+// function Person(name, age) {
+//   this.name = name;
+//   this.age = age;
+
+//   // method constructor ke andar define kiya
+//   this.sayHello = function () {
+//     console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+//   };
+// }
+
+// let p1 = new Person("Hasnain", 22);
+// let p2 = new Person("Ali", 25);
+
+// p1.sayHello();  // Hello, my name is Hasnain and I am 22 years old.
+// p2.sayHello();  // Hello, my name is Ali and I am 25 years old.
+
+// 2 [Constructor + Prototype Methods (Efficient Way)]
+// function Car(brand, model) {
+//   this.brand = brand;
+//   this.model = model;
+// }
+
+// // method ko prototype me add karo
+// Car.prototype.drive = function () {
+//   console.log(`${this.brand} ${this.model} is driving...`);
+// };
+
+// let c1 = new Car("Toyota", "Corolla");
+// let c2 = new Car("Honda", "Civic");
+
+// c1.drive();  // Toyota Corolla is driving...
+// c2.drive();  // Honda Civic is driving...
+
+// 3 [Constructor Methods using ES6 Class]
+// class Student {
+//   constructor(name, roll) {
+//     this.name = name;
+//     this.roll = roll;
+//   }
+
+//   // yeh method class ke andar likha gaya
+//   display() {
+//     console.log(`Student: ${this.name}, Roll No: ${this.roll}`);
+//   }
+// }
+
+// let s1 = new Student("Sara", 101);
+// let s2 = new Student("Ahmed", 102);
+
+// s1.display();  // Student: Sara, Roll No: 101
+// s2.display();  // Student: Ahmed, Roll No: 102
 
 // 4 []
 
 
-// 5 []
-
-
 // ---------------------------------------
-// Chapter # 70
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 71
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 72
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 73
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 74
+// Chapter # 74 [Objects: Prototypes]
 // ---------------------------------------
 
 // 1 []
@@ -3567,25 +3677,6 @@
 
 // ---------------------------------------
 // Chapter # 89
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 90
 // ---------------------------------------
 
 // 1 []
