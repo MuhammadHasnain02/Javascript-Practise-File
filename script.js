@@ -3200,6 +3200,13 @@
 // Chapter # 70 [Objects: Properties]
 // ---------------------------------------
 
+// Object
+// let person = {
+//   name: "Hasnain",
+//   age: 22,
+//   city: "Karachi"
+// };
+
 // 1 [Accessing Object Properties]
 // console.log(person.name);    // dot notation
 // console.log(person["age"]);  // bracket notation
@@ -3327,7 +3334,7 @@
 // let s1 = new Student("Sara", 101);
 // let s2 = new Student("Ahmed", 102);
 
-// s1.display();  // Student: Sara, Roll No: 101
+// s1.display();  // Student: Sara, Roll No: 101 
 // s2.display();  // Student: Ahmed, Roll No: 102
 
 // ---------------------------------------

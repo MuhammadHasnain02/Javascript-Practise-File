@@ -667,6 +667,88 @@
 
 // ----------------- <<< OBJECTS >>> -------------------
 
+// let person = {
+//   name: "ali",
+//   age: 20,
+// };
+
+// console.log(person);
+// console.log("======================");
+// console.log(person.name)
+// console.log(person["age"])
+// console.log("======================");
+// person.city = "Karachi"
+// console.log(person);
+// delete person.age
+// console.log(person);
+// console.log("======================");
+// console.log("city" in person);
+// console.log("country" in person);
+
+// ------------------------------------
+
+// let person = {
+//     name: "ali",
+//     age: 20,
+    
+//     isAdult: function (reqAge) {
+//         person.age >= reqAge ? console.log(true) : console.log(false);
+//     },
+//     isAdmin() {
+//         console.log(this.name);
+//     }
+// };
+
+// person.isAdult(18)
+// person.isAdmin()
+
+// ------------------------------------
+
+// let person = {
+//     name: "ali",
+//     age : 20,
+//     city: "karachi"
+// };
+
+// console.log(Object.keys(person));
+// console.log(Object.values(person));
+// console.log("======================");
+// console.log(Object.entries(person));
+// console.log("======================");
+
+// let obj1 = {val1 : "A"}
+// let obj2 = {val2 : "B"}
+
+// console.log(obj1);
+// console.log(obj2);
+// console.log("======================");
+// let merged = Object.assign({},obj1,obj2)
+// console.log(merged);
+// console.log("======================");
+// Object.seal(person)
+// person.age = 22
+// delete person.city
+// console.log("person => " , person);
+// console.log("======================");
+// let lockObj = Object.freeze(person)
+// person.age = 22
+// console.log("person => " , person);
+
+// ------------------------------------
+
+// function Person(name, age) {
+//   this.name = name
+//   this.age = age
+// }
+
+// Person.prototype.greet = function() {
+//   console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+// };
+
+// let person1 = new Person("ali" , 20)
+// person1.greet()
+// console.log(person1);
+
 // ----------------- CALL -------------------
 // let user1 = {
 //     name : "Ahmed",
@@ -747,7 +829,7 @@
 // fn1()
 // fn2()
 
-// --------------- Joining Objects ---------------------
+// ------------------------------------
 
 // const obj1 = {
 //     key1: "Key1",
@@ -762,7 +844,7 @@
 // console.log(obj2)
 // console.log(obj2.key1)
 
-// ----------------------
+// ------------------------------------
 
 // const obj1 = {
 //     key1: "Key => 1",
@@ -776,7 +858,7 @@
 // console.log(obj2)
 // console.log(obj2.key1)
 
-// --------------- Short Method [Create User] ---------------------
+// ------------------------------------
 
 // let users = []
 
@@ -829,9 +911,12 @@
 // console.log("--------------------------");
 // getAllUserEmails()
 
-// --------------- Modern Method [Create User] ---------------------
 
-// ------------ 1 --------------
+// let person = {
+//   name: "Hasnain",
+//   age: 22,
+//   city: "Karachi"
+// };// ------------------------------------
 
 // function createUser(Username , Useremail) {
 //     let user = Object.create(createUser.prototype)
@@ -851,7 +936,7 @@
 // let user1 = createUser("Ali" , "Ali@gmail.com")
 // console.log(user1);
 
-// ------------ 2 --------------
+// ------------------------------------
 
 // function CreateUser(username, email) {
 //     this.username = username
@@ -869,7 +954,7 @@
 // const user1 = new CreateUser("Talha", "Talha@gmail.com")
 // console.log(user1)
 
-// ------------ 3 --------------
+// ------------------------------------
 
 // class User {
 
@@ -891,3 +976,298 @@
 // const userOne = new User('Ahmed', "Ahmed@gmail.com")
 // // userOne.login()
 // console.log(userOne)
+
+// ------------------------------------
+
+// class Student {
+    
+//     constructor (name , roll) {
+//         this.name   = name
+//         this.rollNo = roll
+//     }
+
+//     dispStd() {
+//         console.log(`Student : ${this.name} , Roll No. : ${this.rollNo}`);
+//     }
+
+// }
+
+// let std1 = new Student("ali" , 10)
+// console.log(std1);
+// std1.dispStd()
+
+// ------------------------------------
+
+// class User {
+
+//     constructor(name , email) {
+//         this.name = name
+//         this.email = email
+//     }
+//     login() {
+//         console.log(`${this.name} has logged in`);
+//     }
+//     logout() {
+//         console.log(`${this.email} has logged out`);
+//     }
+//     is18(yes_No) {
+//         console.log(yes_No);
+//     }
+
+// }
+// let newUser = new User("ali" , "ali@gmail.com")
+// newUser.login()
+// newUser.logout()
+// newUser.is18(false)
+// console.log(newUser);
+
+// console.log("====================================");
+
+// class Owner extends User{
+
+//     constructor(name , email , isOwner) {
+//         super(name , email)
+//         this.isOwner = isOwner
+//     }
+
+// }
+// let newOwner = new Owner("Boss" , "boss@gmail.com" , true)
+// newOwner.login()
+// newOwner.logout()
+// newOwner.is18(true)
+// console.log(newOwner);
+
+// ------------------------------------
+
+// class User {
+
+//     constructor(name , email) {
+//         this.name = name
+//         this.email = email
+//     }
+//     login() {
+//         console.log(`${this.name} has logged in`);
+//         return this
+//     }
+//     logout() {
+//         console.log(`${this.email} has logged out`);
+//         return this
+//     }
+//     isOwner(yes_No) {
+//         console.log("isOwner : " , yes_No);
+//         return this
+//     }
+
+// }
+// let newUser = new User("ali" , "ali@gmail.com")
+// console.log(newUser);
+// newUser.login().logout().isOwner(false)
+
+// console.log("====================================");
+
+// class Owner extends User{
+
+//     constructor(name , email) {
+//         super(name , email)
+//     }
+
+// }
+// let newOwner = new Owner("Boss" , "boss@gmail.com")
+// console.log(newOwner);
+// newOwner.login().logout().isOwner(true)
+
+// ------------------------------------
+
+// class User {
+//     constructor(name , email) {
+//         this.name = name
+//         this.email = email
+//         this.score = 0
+//     }
+//     login() {
+//         console.log(`${this.username} has logged in`);
+//         return this
+//     }
+
+//     logout() {
+//         console.log(`${this.username} has logged out`);
+//         return this
+//     }
+//     incrScor() {
+//         console.log(`Your current score is: ${this.score}`);
+//         this.score++
+//         return this
+//     }
+// }
+
+// let user1 = new User("ali", "ali@gmail.com")
+// let user2 = new User("mujtaba", "mujtaba@gmail.com")
+
+// console.log("==================================");
+
+// class Admin extends User {
+//     constructor(name , email , role) {
+//     super(name , email)
+//         this.role = role
+//     }
+//     addUser(user) {
+//         users.push(user)
+//     }
+//     deletUser(user) {
+//         users = users.filter((usr) => usr.name !== user.name)
+//     }
+// }
+
+// // Users Array
+// let users = []
+// // Users Array Before Added OR Delete User
+// console.log(users);
+// console.log("======================");
+
+// let admin1 = new Admin("Boss", "boss@gmail.com" , "admin")
+// console.log(admin1);
+// console.log("======================");
+
+// // Add User
+// admin1.addUser(user1)
+// admin1.addUser(user2)
+
+// // Delete User
+// admin1.deletUser(user1)
+// admin1.deletUser(user2)
+
+// // Users Array After Added OR Delete User
+// console.log(users);
+
+// ----------------- Product Billing App [Function Method] -------------------
+
+// // Cart Constructor
+// function Cart() {
+//     this.item = []
+// }
+
+// // Add product to cart
+// Cart.prototype.addProd = function (product) {
+//     this.item.push(product)
+// }
+
+// // Calculate total price
+// Cart.prototype.total = function () {
+//     return this.item.reduce((sum , item) => sum + item.price , 0)
+// }
+
+// // Full Bill Discount
+// Cart.prototype.fulBillDisc = function (percent) {
+//     let fulBilPric = this.total()
+//     return fulBilPric - (fulBilPric * percent / 100)
+// }
+
+// let cart = new Cart()
+
+// // Product Constructor
+// function Product(title , price) {
+//     this.title = title
+//     this.price = price
+
+//     cart.addProd(this)
+// }
+
+// // Only One Product Discount
+// Product.prototype.discount = function (percent) {
+//     return this.price - (this.price * percent / 100)
+// }
+
+// // Products
+// let prod1 = new Product("Mouse"   , 100)
+// let prod2 = new Product("Mobile"  , 1000)
+// let prod3 = new Product("Laptop"  , 2000)
+// let prod4 = new Product("Computer", 3000)
+
+// let buyItems = cart.item
+// console.log("Cart Items:" , buyItems);
+
+// let totalBill = cart.total()
+// console.log("Total Price:", totalBill);
+
+// let billDisc = cart.fulBillDisc(5)
+// console.log("Discount Rate => " , billDisc);
+
+// ----------------- Product Billing App [Class Method] -------------------
+
+// // Cart Constructor
+// class Cart {
+//     constructor() {
+//         this.items = []
+//     }
+
+//     // Add product in cart
+//     addProduct(product) {
+//         this.items.push(product)
+//     }
+
+//     // Calculate total price
+//     totalPrice() {
+//         return this.items.reduce((sum , item) => sum + item.price , 0)
+//     }
+
+//     // Calculate Total Bill
+//     totlBillDisc(percent) {
+//         let totlBill = this.totalPrice()
+//         return totlBill - (totlBill * percent / 100)
+//     }
+// }
+// // Add New Cart
+// let cart = new Cart()
+
+// // Product Constructor
+// class Product {
+
+//     constructor(title , price) {
+//         this.title = title
+//         this.price = price
+        
+//         cart.addProduct(this)
+//     }
+    
+//     // Per Product Discount
+//     prodDisc(percent) {
+//         return this.price - (this.price * percent / 100)
+//     }
+
+// }
+// // Products
+// let prod1 = new Product("Mouse"   , 100)
+// let prod2 = new Product("Mobile"  , 1000)
+// let prod3 = new Product("Laptop"  , 2000)
+// let prod4 = new Product("Computer", 3000)
+
+// let buyItems = cart.items
+// console.log("Cart Items:" , buyItems);
+
+// let totalBill = cart.totalPrice()
+// console.log("Total Price:", totalBill);
+
+// let billDisc = cart.totlBillDisc(10)
+// console.log("Discount Rate => " , billDisc);
+
+// -------------------------------------
+
+// crtBkAccBtn.addEventListener("click" , () => {
+
+//     let accDiv = document.createElement("div")
+//     accDiv.innerHTML +=
+//     `
+//         <p id="prntBalTxt">${accName.value} Current Balance : ${accAmount.value}</p>
+//         <input type="number" id="inpVal">
+//         <button id="depBtn">Deposit</button>
+//         <button id="withDrawBtn">With Draw</button>
+//         <br>
+//     `
+//     accName.value = ""
+//     accAmount.value = ""
+// })
+
+// ------------------------------------
+
+
+
