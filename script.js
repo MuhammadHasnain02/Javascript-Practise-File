@@ -1,5 +1,745 @@
-// <<<  Javascript Books Chapters  >>>
+// <<< 📘 Javascript Books Chapters >>>
 
+// -----------------------------------------------------------------
+
+// ========= <<< 🔹Chapters Summary >>> =========
+// 1. Alerts
+// Definition: user ko message show karne ke liye ek simple popup box.
+
+// Syntax:
+// alert("Your message here");
+
+
+// Notes:
+// execution ko temporarily stop kar deta hai jab tak user "OK" press na kare.
+// sirf informational messages ke liye use hota hai.
+
+// 2. Variables for Strings
+// Definition: string matlab text ko store karna variable me.
+
+// Syntax:
+// let name = "Hasnain";
+
+
+// Important:
+// String always quotes me hoti hai " " ya ' '.
+// Template literals: backticks (`Hello ${name}`).
+
+// 3. Variables for Numbers
+// Definition: numbers ko store karna variable me.
+
+// Syntax:
+// let age = 22;
+// let price = 99.5;
+
+// Important:
+// Integers aur decimals dono store karte hain.
+// Numbers ke sath math operators use hote hain.
+
+// 4. Variable Names: Legal and Illegal
+// Legal:
+// letters, numbers, _, $
+// cannot start with number
+// case-sensitive (name ≠ Name)
+
+// Illegal:
+// space in name (user name ❌)
+// reserved keywords (var, let, if ❌)
+// special characters (@, %, - ❌)
+
+// 5. Math Expressions: Familiar Operators
+// Definition: normal math operators
+
+// Operators:
+// + (addition)
+// - (subtraction)
+// * (multiplication)
+// / (division)
+
+// 6. Math Expressions: Unfamiliar Operators
+// Operators:
+// % → modulus (remainder)
+// ++ → increment (by 1)
+// -- → decrement (by 1)
+// ** → exponentiation (power)
+
+// 7. Math Expressions: Eliminating Ambiguity
+// Definition: order of operations clear karna with parentheses.
+
+// Notes:
+// JS follows BODMAS/PEMDAS rules.
+// Example order: () → ** → * / % → + -
+
+// 8. Concatenating Text Strings
+// Definition: 2 ya zyada strings ko jodna.
+
+// Operators/Methods:
+// + → "Hello " + "World"
+// Template literal → `Hello ${name}`
+// .concat() method
+
+// 9. Prompts
+// Definition: user se input lene ke liye popup box.
+
+// Syntax:
+// let user = prompt("Enter your name:");
+
+// Notes:
+// Returns string hamesha.
+// Agar cancel ho to null return karta hai.
+
+// 10. if Statements
+// Definition: condition check karne ke liye use hota hai.
+
+// Syntax:
+// if (condition) {
+//    // run code
+// } else if (anotherCondition) {
+//    // run code
+// } else {
+//    // run code
+// }
+
+// Important:
+// Condition hamesha boolean (true/false) return kare.
+// Comparison operators: ==, ===, !=, <, >, <=, >=
+// Logical operators: && (AND), || (OR), ! (NOT)
+
+// 11. Comparison Operators
+// Definition: values ko compare karne ke liye.
+
+// Operators:
+// == → equal (type convert karta hai)
+// === → strict equal (type + value check)
+// != → not equal
+// !== → strict not equal
+// <, >, <=, >= → less/greater comparisons
+
+// 12. if...else and else if Statements
+// Definition: conditional branching.
+
+// Syntax:
+// if (condition) { }
+// else if (another) { }
+// else { }
+
+// Notes:
+// multiple conditions check karne ke liye useful.
+// else block optional hota hai.
+
+// 13. Testing Sets of Conditions
+// Definition: ek se zyada conditions ko test karna ek hi statement me.
+
+// Operators:
+// && → AND (all conditions true)
+// || → OR (at least one true)
+// ! → NOT (reverse condition)
+
+// 14. if Statements Nested
+// Definition: ek if ke andar dusra if.
+// Use: jab complex conditions ho jo step-by-step test karni ho.
+// Note: zyada nested if se code complex ho jata hai → try to simplify with logical operators.
+
+// 15. Arrays
+// Definition: ek hi variable me multiple values store karne ka tarika.
+
+// Syntax:
+// let arr = [10, 20, 30];
+
+// Important Methods:
+// .length → number of elements
+// index access (arr[0])
+
+// 16. Arrays: Adding and Removing Elements
+// Adding:
+// .push() → end me add
+// .unshift() → start me add
+
+// Removing:
+// .pop() → end se remove
+// .shift() → start se remove
+
+// 17. Arrays: Removing, Inserting, and Extracting Elements
+// Important Methods:
+// .splice(start, deleteCount, items...) → remove/insert anywhere
+// .slice(start, end) → extract (new array banata hai)
+
+// 18. for Loops
+// Definition: repeat karne ka control structure.
+
+// Syntax:
+// for (let i = 0; i < 5; i++) { }
+
+// Parts:
+// init → let i = 0
+// condition → i < 5
+// update → i++
+
+// 19. for Loops: Flags, Booleans, Array length, and Breaks
+// Flags: ek variable jo loop ke andar condition track kare.
+// Booleans: true/false values check karne ke liye.
+// Array length: loop ka end decide karne ke liye .length.
+// Break: loop ko forcefully stop karna.
+
+// 20. for Loops Nested
+// Definition: ek loop ke andar doosra loop.
+// Use: jab 2D arrays, tables, ya combinations banane ho.
+// Note: bahut heavy processing kar sakte hain → optimize zaroor karo.
+
+// 21. Changing Case
+// Definition: string ko uppercase/lowercase me convert karna.
+
+// Methods:
+// .toUpperCase() → sab capital letters.
+// .toLowerCase() → sab small letters.
+
+// 22. Strings: Measuring Length and Extracting Parts
+// Measuring Length:
+// .length → total characters count.
+
+// Extracting Parts:
+// .slice(start, end) → substring extract karta hai.
+// .substring(start, end) → similar to slice.
+// .substr(start, length) → start index + kitne chars chahiye.
+
+// 23. Strings: Finding Segments
+// Definition: ek segment (word/phrase) ko string me search karna.
+
+// Methods:
+// .indexOf("word") → first match index.
+// .lastIndexOf("word") → last match index.
+// .includes("word") → true/false return.
+// .startsWith("abc"), .endsWith("xyz") → check karna beginning/end.
+
+// 24. Strings: Finding a Character at a Location
+// Methods:
+// .charAt(index) → ek character return.
+// str[index] → bracket notation se direct access.
+// .charCodeAt(index) → unicode value return.
+
+// 25. Strings: Replacing Characters
+// Definition: string ke andar text replace karna.
+
+// Method:
+// .replace("old", "new") → first match replace.
+// .replaceAll("old", "new") → sab replace.
+// regex bhi use hota hai: .replace(/old/g, "new").
+
+// 26. Rounding Numbers
+// Methods:
+// Math.round(num) → nearest integer.
+// Math.floor(num) → always down.
+// Math.ceil(num) → always up.
+// Math.trunc(num) → remove decimal part.
+
+// 27. Generating Random Numbers
+// Method:
+// Math.random() → 0 se 1 ke beech decimal number.
+
+// Custom Range:
+// Math.floor(Math.random() * 10) // 0–9
+// Math.floor(Math.random() * 100) + 1 // 1–100
+
+// 28. Converting Strings to Integers and Decimals
+// Methods:
+// parseInt("123") → integer.
+// parseFloat("12.34") → decimal number.
+
+// Note: agar string number se start hoti hai to parse kar lega.
+
+// 29. Converting Strings to Numbers, Numbers to Strings
+// Strings → Numbers:
+// Number("123")
+// + "123" (unary plus operator)
+
+// Numbers → Strings:
+// .toString()
+// String(123)
+
+// 30. Controlling the Length of Decimals
+// Methods:
+// .toFixed(n) → fixed decimal places (string return karta hai).
+// .toPrecision(n) → total digits (string return karta hai).
+
+// Example:
+// let num = 3.14159;
+// num.toFixed(2);     // "3.14"
+// num.toPrecision(3); // "3.14"
+
+// 31. Getting the Current Date and Time
+// Definition: JavaScript Date object se current date/time milta hai.
+
+// Syntax:
+// let now = new Date();
+
+// Note: returns full date + time of user’s system.
+
+// 32. Extracting Parts of the Date and Time
+// Methods:
+// .getFullYear() → year (2025)
+// .getMonth() → month (0–11)
+// .getDate() → day of month (1–31)
+// .getDay() → day of week (0–6)
+// .getHours(), .getMinutes(), .getSeconds(), .getMilliseconds()
+
+// 33. Specifying a Date and Time
+// Definition: custom date/time banana.
+
+// Syntax:
+// let d1 = new Date("2025-09-12");
+// let d2 = new Date(2025, 8, 12, 10, 30, 0); // year, month(0–11), day, hr, min, sec
+
+// 34. Changing Elements of a Date and Time
+// Methods:
+// .setFullYear(year)
+// .setMonth(month)
+// .setDate(day)
+// .setHours(hr), .setMinutes(min), .setSeconds(sec)
+
+// Note: directly modify kar deta hai date object ko.
+
+// 35. Functions
+// Definition: reusable code block.
+
+// Syntax:
+// function greet() {
+//   console.log("Hello");
+// }
+
+// Notes: DRY principle (Don’t Repeat Yourself).
+
+// 36. Functions: Passing Them Data
+// Definition: parameters ke zariye data bhejna.
+
+// Syntax:
+// function greet(name) {
+//   console.log("Hello " + name);
+// }
+
+// Note: arguments function call ke waqt diye jate hain.
+
+// 37. Functions: Passing Data Back from Them
+// Definition: return statement se function output deta hai.
+
+// Syntax:
+// function add(a, b) {
+//   return a + b;
+// }
+
+// Note: return ke baad function execution ruk jata hai.
+
+// 38. Functions: Local vs. Global Variables
+// Global: function ke bahar declared → sab jagah accessible.
+// Local: function ke andar declared → sirf usi function ke andar accessible.
+// Note: same name ke variables local ko preference dete hain.
+
+// 39. switch Statements: How to Start Them
+// Definition: multiple conditions handle karne ka alternate to if...else.
+
+// Syntax Start:
+// switch (expression) {
+//   case value1:
+//     // code
+//     break;
+// }
+
+// 40. switch Statements: How to Complete Them
+// Important Parts:
+// case → match value
+// break → exit case
+// default → fallback if no match
+
+// Note: bina break ke cases fall-through karte hain.
+
+// 41. while Loops
+// Definition: condition true rahe to code repeat hota hai.
+
+// Syntax:
+// while (condition) {
+//   // code
+// }
+
+// Note: agar condition kabhi false na ho to infinite loop ban sakta hai.
+
+// 42. do...while Loops
+// Definition: pehle code run hoga, phir condition check hogi.
+
+// Syntax:
+// do {
+//   // code
+// } while (condition);
+
+// Note: at least 1 bar run hamesha hoga.
+
+// 43. Placing Scripts
+// Definition: HTML me JavaScript ko place karna.
+
+// Ways:
+// <head> → page load hone se pehle (blocking).
+// <body> end → recommended (page load fast).
+// external .js file via <script src="app.js"></script>.
+
+// 44. Commenting
+// Definition: code explain karne ya disable karne ke liye.
+
+// Types:
+// Single-line: // this is comment
+
+// Multi-line:
+// /* this is
+//    multi-line comment */
+
+// 45. Events: Link
+// Definition: links (anchor tags) ke sath events.
+
+// Examples:
+// onclick → jab link click ho.
+// onmouseover, onmouseout → hover effects.
+
+// 46. Events: Button
+// Definition: button click pe event trigger.
+
+// Examples:
+// onclick → form submit ya custom action.
+// ondblclick → double-click action.
+
+// 47. Events: Mouse
+// Definition: mouse related actions capture karna.
+
+// Important Events:
+// onclick, ondblclick
+// onmouseover, onmouseout
+// onmousemove, onmousedown, onmouseup
+
+// 48. Events: Fields
+// Definition: form fields pe events.
+
+// Important Events:
+// onfocus → jab input focus ho.
+// onblur → jab input lose focus kare.
+// onchange → jab value change ho aur focus leave ho.
+// oninput → jab user type kare.
+
+// 49. Reading Field Values
+// Definition: input ya form field ki value read karna.
+
+// Syntax:
+// let val = document.getElementById("username").value;
+
+// 50. Setting Field Values
+// Definition: input field ki value set/update karna.
+
+// Syntax:
+// document.getElementById("username").value = "Hasnain";
+
+// 51. Reading and Setting Paragraph Text
+// Definition: paragraph (<p>) ka text lena ya update karna.
+
+// Syntax:
+// let text = document.getElementById("para1").innerText;   // read
+// document.getElementById("para1").innerText = "New text"; // set
+
+// Note: innerText ya textContent use hota hai.
+
+// 52. Manipulating Images and Text
+// Definition: images aur text dynamically change karna.
+
+// Methods:
+// .src → image ka source badalna.
+// .alt → alternative text.
+// .innerHTML / .innerText → text change karna.
+
+// 53. Swapping Images
+// Definition: ek image ke jagah dusri image show karna.
+
+// Syntax:
+// document.getElementById("pic").src = "image2.jpg";
+
+// Use: hover effects, gallery, sliders.
+
+// 54. Swapping Images and Setting Classes
+// Definition: image swap ke sath CSS class bhi change karna.
+
+// Syntax:
+// let img = document.getElementById("pic");
+// img.src = "image2.jpg";
+// img.className = "highlight";
+
+// Note: CSS styling bhi apply kar sakte ho.
+
+// 55. Setting Styles
+// Definition: inline CSS ko JS ke zariye set karna.
+
+// Syntax:
+// document.getElementById("box").style.color = "red";
+// document.getElementById("box").style.backgroundColor = "yellow";
+
+// Note: style.propertyName use hota hai camelCase me.
+
+// 56. Target All Elements by Tag Name
+// Definition: ek hi tag ke multiple elements select karna.
+
+// Syntax:
+// let paras = document.getElementsByTagName("p");
+
+// Note: returns an HTMLCollection (array-like).
+
+// 57. Target Some Elements by Tag Name
+// Definition: collection me se kuch elements target karna.
+
+// Syntax:
+// let paras = document.getElementsByTagName("p");
+// paras[0].innerText = "Changed first paragraph";
+
+// Note: index se specific element access hota hai.
+
+// 58. The DOM
+// Definition: Document Object Model = webpage ka structured tree.
+
+// Root: document object.
+// Access Methods:
+// getElementById()
+// getElementsByTagName()
+// querySelector() / querySelectorAll()
+
+// 59. The DOM: Parents and Children
+// Definition: DOM me har node ka ek parent aur children hote hain.
+
+// Properties:
+// .parentNode → parent element.
+// .children → child elements (HTMLCollection).
+// .firstChild / .lastChild.
+
+// 60. The DOM: Finding Children
+// Definition: specific element ke child nodes find karna.
+
+// Methods:
+// .children → only element nodes.
+// .childNodes → all nodes (including text, comments).
+// .firstElementChild, .lastElementChild.
+
+// 61. The DOM: Junk Artifacts and nodeType
+// Definition: DOM me non-element nodes (whitespace, comments) → junk artifacts.
+
+// Property:
+// .nodeType → node ka type return karta hai
+// 1 → element node
+// 3 → text node
+// 8 → comment node
+
+// Note: loops me filter karne ke liye useful.
+
+// 62. The DOM: More Ways to Target Elements
+
+// Methods:
+// getElementsByClassName("class")
+// querySelector("selector") → first match
+// querySelectorAll("selector") → all matches
+
+// Note: modern JS me querySelector zyada use hota hai.
+
+// 63. The DOM: Getting a Target's Name
+// Definition: element ke tag ya name ko read karna.
+
+// Properties:
+// .tagName → element ka HTML tag (DIV, P)
+// .name → form element ka name attribute
+// .id → element ka id
+
+// 64. The DOM: Counting Elements
+// Definition: parent ya page ke andar total elements count karna.
+
+// Methods:
+// .length → HTMLCollection ya NodeList ke liye
+// .childElementCount → parent ke child elements count
+// .children.length → same as above
+// .childNodes.length → saare nodes count (junk included)
+
+// 65. The DOM: Attributes
+// Definition: element ke attributes ko read, set, remove karna.
+
+// Methods:
+// getAttribute("attr")
+// setAttribute("attr","value")
+// removeAttribute("attr")
+// hasAttribute("attr")
+
+// Properties: direct access via .id, .className, .src, etc.
+
+// 66. The DOM: Attribute Names and Values
+// Definition: element ke saare attribute names aur unki values access karna.
+
+// Methods:
+// .attributes → NamedNodeMap
+// .getAttribute("attr")
+// .setAttribute("attr", value)
+// .removeAttribute("attr")
+// .hasAttribute("attr")
+
+// 67. The DOM: Adding Nodes
+// Definition: naya element ya text node create kar ke DOM me insert karna.
+
+// Methods:
+// document.createElement("tag")
+// document.createTextNode("text")
+// parent.appendChild(node)
+// parent.insertBefore(newNode, existingNode)
+// .append() / .prepend()
+
+// 68. The DOM: Inserting Nodes
+// Definition: element ko specific jagah insert karna.
+
+// Methods:
+// appendChild() → end me
+// insertBefore(newNode, referenceNode) → beech me
+// .prepend() → start me
+// .append(node1, node2, …) → multiple nodes
+// .insertAdjacentElement(position, element) → precise location
+
+// 69. Objects
+// Definition: key-value pairs ka collection.
+
+// Syntax:
+// let person = {name: "Hasnain", age: 22};
+
+// Note: properties aur methods store kar sakte ho.
+
+// 70. Objects: Properties
+// Definition: objects ke andar values stored as properties.
+
+// Access:
+// Dot notation → person.name
+// Bracket notation → person["age"]
+// Important: properties can be updated, added, or deleted.
+
+// 71. Objects: Methods
+// Definition: objects ke andar functions store karna aur call karna.
+
+// Syntax:
+// let person = {
+//   name: "Hasnain",
+//   greet: function() { console.log("Hello " + this.name); }
+// };
+// person.greet(); // call method
+
+
+// Note: this keyword se current object reference hota hai.
+
+// 72. Objects: Constructors
+
+// Definition: template ke tarah function jo objects banata hai.
+
+// Syntax:
+
+// function Person(name, age) {
+//   this.name = name;
+//   this.age = age;
+// }
+// let p1 = new Person("Ali", 25);
+
+
+// Note: new keyword use hota hai.
+
+// 73. Objects: Constructors for Methods
+
+// Definition: constructor ke andar methods define karna.
+
+// Syntax:
+
+// function Person(name) {
+//   this.name = name;
+//   this.greet = function() { console.log("Hello " + this.name); };
+// }
+// let p1 = new Person("Ali");
+// p1.greet();
+
+
+// Note: each object apna method copy karega.
+
+// 74. Objects: Prototypes
+
+// Definition: methods aur properties share karne ka tarika.
+
+// Syntax:
+
+// function Person(name) { this.name = name; }
+// Person.prototype.greet = function() { console.log("Hello " + this.name); };
+
+
+// Note: sab objects same prototype method share karte hain.
+
+// 75. Objects: Checking for Properties and Methods
+
+// Methods:
+
+// obj.hasOwnProperty("prop") → check if property exists
+
+// "prop" in obj → check if property exists (own + prototype)
+
+// typeof obj.method === "function" → check if method exists
+
+// 76. Browser Control: Getting and Setting the URL
+
+// Definition: current page URL ko read ya change karna.
+
+// Properties:
+
+// window.location.href → get or set complete URL
+
+// window.location.protocol → http/https
+
+// window.location.host → domain
+
+// 77. Browser Control: Getting and Setting the URL Another Way
+
+// Methods:
+
+// window.location.assign(url) → navigate to new URL
+
+// window.location.replace(url) → replace current page
+
+// window.location.reload() → reload page
+
+// 78. Browser Control: Forward and Reverse
+
+// Definition: browser history navigate karna.
+
+// Methods:
+
+// window.history.back() → go back
+
+// window.history.forward() → go forward
+
+// window.history.go(n) → n steps in history
+
+// 79. Browser Control: Filling the Window with Content
+
+// Definition: browser window me naya content write karna.
+
+// Methods:
+
+// document.write("text") → page me direct content add
+
+// Note: mostly page load ke time use hota hai, dynamic use risky
+
+// 80. Browser Control: Controlling the Window's Size and Location
+
+// Definition: window size aur position control karna.
+
+// Methods/Properties:
+
+// window.resizeTo(width, height) → set size
+
+// window.resizeBy(dw, dh) → increase/decrease size
+
+// window.moveTo(x, y) → move window
+
+// window.moveBy(dx, dy) → relative move
+
+
+// -----------------------------------------------------------------
+
+// ========= <<< 🔹Examples and Methods >>> =========
 // -------------------------------------------------------------
 // basic data types - (string, number, boolean, undefined, null)
 // -------------------------------------------------------------
@@ -3497,64 +4237,167 @@ console.log(img.alt);         // Website Logo
 // link.setAttribute("class", "btn btn-primary");
 // console.log(link.className); // btn btn-primary
 
-
-
-// ---------------------------------------
-// Chapter # 66
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
+// 8 [Toggle attribute dynamically]
+/* <input type="text" id="inp" placeholder="Enter name">
+<script>
+let inp = document.getElementById("inp");
+inp.setAttribute("disabled", true); // disable field
+setTimeout(() => inp.removeAttribute("disabled"), 3000); // enable after 3s
+</script> */
 
 // ---------------------------------------
-// Chapter # 67
+// Chapter # 66 [The DOM: Attribute names and values]
 // ---------------------------------------
 
-// 1 []
+// Important Properties & Methods :
+// getAttribute(attrName) → attribute ki value nikalne ke liye
+// setAttribute(attrName, value) → attribute ki value set/replace karne ke liye
+// removeAttribute(attrName) → attribute ko delete karne ke liye
+// hasAttribute(attrName) → check karne ke liye attribute exist karta hai ya nahi
+// attributes → ek NamedNodeMap return karta hai jisme saare attribute names aur values hoti hain
 
+// 1 [Get attribute name and value]
+/* <a id="myLink" href="https://google.com" target="_blank">Google</a>
+<script>
+let link = document.getElementById("myLink");
+console.log(link.getAttribute("href"));   // https://google.com
+console.log(link.getAttribute("target")); // _blank
+</script> */
 
-// 2 []
+// 2 [Set attribute value]
+// link.setAttribute("href", "https://youtube.com");
+// console.log(link.getAttribute("href")); // https://youtube.com
 
+// 3 [Remove attribute]
+// link.removeAttribute("target");
+// console.log(link.hasAttribute("target")); // false
 
-// 3 []
+// 4 [Access all attributes]
+/* <img id="logo" src="logo.png" alt="Website Logo" width="200">
+<script>
+let img = document.getElementById("logo");
+for (let attr of img.attributes) {
+  console.log(attr.name + " = " + attr.value);
+}
+// Output: id=logo, src=logo.png, alt=Website Logo, width=200
+</script> */
 
+// 5 [Check if attribute exists]
+// console.log(img.hasAttribute("alt"));   // true
+// console.log(img.hasAttribute("title")); // false
 
-// 4 []
+// 6 [Custom data attributes]
+/* <button id="btn" data-user="Hasnain" data-role="admin">Click</button>
+<script>
+let btn = document.getElementById("btn");
+console.log(btn.getAttribute("data-user")); // Hasnain
+console.log(btn.getAttribute("data-role")); // admin
+</script> */
 
-
-// 5 []
-
+// 7 [Change attribute dynamically]
+// btn.setAttribute("data-role", "editor");
+// console.log(btn.getAttribute("data-role")); // editor
 
 // ---------------------------------------
-// Chapter # 68
+// Chapter # 67 [The DOM: Adding nodes]
 // ---------------------------------------
 
-// 1 []
+// Important Methods :
+// document.createElement("tag") → naya element banata hai
+// document.createTextNode("text") → naya text node banata hai
+// parent.appendChild(node) → parent ke andar node add karta hai (last me)
+// parent.insertBefore(newNode, existingNode) → specific jagah insert karna
+// element.append() / element.prepend() → naya element start ya end me add karna (modern way)
 
+// 1 [Create and append element]
+/* <ul id="fruits">
+  <li>Apple</li>
+</ul>
+<script>
+let ul = document.getElementById("fruits");
+let newItem = document.createElement("li");
+newItem.innerText = "Mango";
+ul.appendChild(newItem); // Mango add ho gaya
+</script> */
 
-// 2 []
+// 2 [Add text node]
+// let textNode = document.createTextNode("Banana");
+// ul.appendChild(textNode); // text as a node add ho gaya
 
+// 3 [Insert before specific node]
+// let firstItem = ul.firstElementChild;
+// let newNode = document.createElement("li");
+// newNode.innerText = "Orange";
+// ul.insertBefore(newNode, firstItem); // Orange Apple se pehle
 
-// 3 []
+// 4 [Using append() and prepend()]
+// let grape = document.createElement("li");
+// grape.innerText = "Grapes";
+// ul.append(grape);   // end me add
 
+// let cherry = document.createElement("li");
+// cherry.innerText = "Cherry";
+// ul.prepend(cherry); // start me add
 
-// 4 []
+// 5 [Add multiple nodes at once]
+// let div = document.createElement("div");
+// div.innerHTML = "<p>First para</p><p>Second para</p>";
+// document.body.appendChild(div);
 
+// ---------------------------------------
+// Chapter # 68 [The DOM: Inserting nodes]
+// ---------------------------------------
 
-// 5 []
+// Important Methods :
+// appendChild(node) → parent ke end me add karta hai
+// insertBefore(newNode, referenceNode) → reference node se pehle insert karta hai
+// append(node1, node2, …) → multiple nodes ko end me add kar sakte ho
+// prepend(node) → parent ke start me add karta hai
+// insertAdjacentElement(position, element) → precise jagah insert karta hai
 
+// 1 [AppendChild (end me insert karna)]
+/* <ul id="fruits">
+  <li>Apple</li>
+</ul>
+<script>
+let ul = document.getElementById("fruits");
+let li = document.createElement("li");
+li.innerText = "Mango";
+ul.appendChild(li); // Mango last me add
+</script> */
+
+// 2 [Insert before specific node]
+// let orange = document.createElement("li");
+// orange.innerText = "Orange";
+// let firstItem = ul.firstElementChild;
+// ul.insertBefore(orange, firstItem); // Orange Apple se pehle
+
+// 3 [Prepend (start me insert karna)]
+// let banana = document.createElement("li");
+// banana.innerText = "Banana";
+// ul.prepend(banana); // Banana sabse pehle
+
+// 4 [Append multiple nodes]
+// let li1 = document.createElement("li");
+// li1.innerText = "Cherry";
+
+// let li2 = document.createElement("li");
+// li2.innerText = "Grapes";
+
+// ul.append(li1, li2); // dono end me add ho gaye
+
+// 5 [insertAdjacentElement (exact position)]
+/* <div id="box">
+  <p>First</p>
+</div>
+<script>
+let box = document.getElementById("box");
+let para = document.createElement("p");
+para.innerText = "Inserted para";
+
+// 4 positions: beforebegin, afterbegin, beforeend, afterend
+box.insertAdjacentElement("beforeend", para); // <div> ke andar last me
+</script> */
 
 // ---------------------------------------
 // Chapter # 69 [Objects]
