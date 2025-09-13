@@ -9,7 +9,6 @@
 // Syntax:
 // alert("Your message here");
 
-
 // Notes:
 // execution ko temporarily stop kar deta hai jab tak user "OK" press na kare.
 // sirf informational messages ke liye use hota hai.
@@ -622,30 +621,24 @@
 // };
 // person.greet(); // call method
 
-
 // Note: this keyword se current object reference hota hai.
 
 // 72. Objects: Constructors
-
 // Definition: template ke tarah function jo objects banata hai.
 
 // Syntax:
-
 // function Person(name, age) {
 //   this.name = name;
 //   this.age = age;
 // }
 // let p1 = new Person("Ali", 25);
 
-
 // Note: new keyword use hota hai.
 
 // 73. Objects: Constructors for Methods
-
 // Definition: constructor ke andar methods define karna.
 
 // Syntax:
-
 // function Person(name) {
 //   this.name = name;
 //   this.greet = function() { console.log("Hello " + this.name); };
@@ -653,89 +646,144 @@
 // let p1 = new Person("Ali");
 // p1.greet();
 
-
 // Note: each object apna method copy karega.
 
 // 74. Objects: Prototypes
-
 // Definition: methods aur properties share karne ka tarika.
 
 // Syntax:
-
 // function Person(name) { this.name = name; }
 // Person.prototype.greet = function() { console.log("Hello " + this.name); };
-
 
 // Note: sab objects same prototype method share karte hain.
 
 // 75. Objects: Checking for Properties and Methods
 
 // Methods:
-
 // obj.hasOwnProperty("prop") → check if property exists
-
 // "prop" in obj → check if property exists (own + prototype)
-
 // typeof obj.method === "function" → check if method exists
 
 // 76. Browser Control: Getting and Setting the URL
-
 // Definition: current page URL ko read ya change karna.
 
 // Properties:
-
 // window.location.href → get or set complete URL
-
 // window.location.protocol → http/https
-
 // window.location.host → domain
 
 // 77. Browser Control: Getting and Setting the URL Another Way
 
 // Methods:
-
 // window.location.assign(url) → navigate to new URL
-
 // window.location.replace(url) → replace current page
-
 // window.location.reload() → reload page
 
 // 78. Browser Control: Forward and Reverse
-
 // Definition: browser history navigate karna.
 
 // Methods:
-
 // window.history.back() → go back
-
 // window.history.forward() → go forward
-
 // window.history.go(n) → n steps in history
 
 // 79. Browser Control: Filling the Window with Content
-
 // Definition: browser window me naya content write karna.
 
 // Methods:
-
 // document.write("text") → page me direct content add
-
 // Note: mostly page load ke time use hota hai, dynamic use risky
 
 // 80. Browser Control: Controlling the Window's Size and Location
-
 // Definition: window size aur position control karna.
 
 // Methods/Properties:
-
 // window.resizeTo(width, height) → set size
-
 // window.resizeBy(dw, dh) → increase/decrease size
-
 // window.moveTo(x, y) → move window
-
 // window.moveBy(dx, dy) → relative move
 
+// 81. Browser Control: Testing for Popup Blockers
+// Definition: browser me popups allowed hain ya blocked check karna.
+
+// Syntax/Method:
+// let popup = window.open("about:blank");
+// if (!popup || popup.closed || typeof popup.closed == 'undefined') {
+//   alert("Popup blocked");
+// }
+
+// Note: modern browsers me auto popups mostly block hote hain.
+
+// 82. Form Validation: Text Fields
+// Definition: input text field me valid data check karna.
+
+// Methods/Properties:
+// .value → input value
+// required attribute → empty na ho
+// pattern attribute → regex validation
+
+// 83. Form Validation: Drop-downs
+// Definition: select element me valid option select karna.
+
+// Methods/Properties:
+// .value → selected option
+// .selectedIndex → selected position
+// .options → all options
+
+// 84. Form Validation: Radio Buttons
+// Definition: radio group me ek option select hai ya nahi check karna.
+
+// Methods/Properties:
+// radio.checked → true/false
+// loop over group to find selected
+
+// 85. Form Validation: ZIP Codes
+// Definition: postal code validation.
+
+// Methods:
+// regex → /^\d{5}(-\d{4})?$/
+// .test() → match check
+
+// 86. Form Validation: Email
+// Definition: email format validate karna.
+
+// Methods:
+// regex → /^\S+@\S+\.\S+$/
+// .test() method
+// type="email" in HTML input also helps
+
+// 87. Exceptions: try and catch
+// Definition: runtime errors handle karna.
+
+// Syntax:
+// try {
+//   // code
+// } catch (error) {
+//   // handle error
+// }
+
+// Note: program crash se bachata hai.
+
+// 88. Exceptions: throw
+// Definition: custom error create karna.
+
+// Syntax:
+// if(!age) throw "Age required";
+
+// Note: try...catch ke sath handle karna recommended.
+
+// 89. Handling Events within JavaScript
+// Definition: HTML elements ke actions handle karna.
+
+// Common Events:
+// Mouse → onclick, ondblclick, onmouseover, onmouseout
+// Keyboard → onkeydown, onkeyup, onkeypress
+// Forms → onsubmit, onchange, onfocus, onblur
+// Window → onload, onresize, onscroll
+
+// Methods:
+// Inline → <button onclick="myFunc()">
+// JS → element.addEventListener("click", func)
 
 // -----------------------------------------------------------------
 
