@@ -1194,61 +1194,61 @@
 
 // ----------------- Product Billing App [Class Method] -------------------
 
-// // Cart Constructor
-// class Cart {
-//     constructor() {
-//         this.items = []
-//     }
+// Cart Constructor
+class Cart {
+    constructor() {
+        this.items = []
+    }
 
-//     // Add product in cart
-//     addProduct(product) {
-//         this.items.push(product)
-//     }
+    // Add product in cart
+    addProduct(product) {
+        this.items.push(product)
+    }
 
-//     // Calculate total price
-//     totalPrice() {
-//         return this.items.reduce((sum , item) => sum + item.price , 0)
-//     }
+    // Calculate total price
+    totalPrice() {
+        return this.items.reduce((sum , item) => sum + item.price , 0)
+    }
 
-//     // Calculate Total Bill
-//     totlBillDisc(percent) {
-//         let totlBill = this.totalPrice()
-//         return totlBill - (totlBill * percent / 100)
-//     }
-// }
-// // Add New Cart
-// let cart = new Cart()
+    // Calculate Total Bill
+    totlBillDisc(percent) {
+        let totlBill = this.totalPrice()
+        return totlBill - (totlBill * percent / 100)
+    }
+}
+// Add New Cart
+let cart = new Cart()
 
-// // Product Constructor
-// class Product {
+// Product Constructor
+class Product {
 
-//     constructor(title , price) {
-//         this.title = title
-//         this.price = price
+    constructor(title , price) {
+        this.title = title
+        this.price = price
         
-//         cart.addProduct(this)
-//     }
+        cart.addProduct(this)
+    }
     
-//     // Per Product Discount
-//     prodDisc(percent) {
-//         return this.price - (this.price * percent / 100)
-//     }
+    // Per Product Discount
+    prodDisc(percent) {
+        return this.price - (this.price * percent / 100)
+    }
 
-// }
-// // Products
-// let prod1 = new Product("Mouse"   , 100)
-// let prod2 = new Product("Mobile"  , 1000)
-// let prod3 = new Product("Laptop"  , 2000)
-// let prod4 = new Product("Computer", 3000)
+}
+// Products
+let prod1 = new Product("Mouse"   , 100)
+let prod2 = new Product("Mobile"  , 1000)
+let prod3 = new Product("Laptop"  , 2000)
+let prod4 = new Product("Computer", 3000)
 
-// let buyItems = cart.items
-// console.log("Cart Items:" , buyItems);
+let buyItems = cart.items
+console.log("Cart Items:" , buyItems);
 
-// let totalBill = cart.totalPrice()
-// console.log("Total Price:", totalBill);
+let totalBill = cart.totalPrice()
+console.log("Total Price:", totalBill);
 
-// let billDisc = cart.totlBillDisc(10)
-// console.log("Discount Rate => " , billDisc);
+let billDisc = cart.totlBillDisc(10)
+console.log("Discount Rate => " , billDisc);
 
 // -------------------------------------
 

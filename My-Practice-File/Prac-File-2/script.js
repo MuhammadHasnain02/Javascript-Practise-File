@@ -382,11 +382,11 @@
 
 // console.log("================================================");
 
-const p1 = {
-  id: 101,
-  title: "mobile",
-  stock: 3
-};
+// const p1 = {
+//   id: 101,
+//   title: "mobile",
+//   stock: 3
+// };
 
 // const {id , title , ...other} = p1
 // console.log("id : " , id);

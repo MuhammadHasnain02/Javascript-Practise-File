@@ -191,7 +191,7 @@
 // var mod = num1 % num2
 
 
-// document.write(
+// document.writeln(
 //     "<table width='152px' border='1px'>"+
 //     "<tr>"+
 //     "<th>"+"ADDITION"+"</th>"
@@ -569,7 +569,7 @@
 
 // 1
 // var arr = ['Ali' , 23 , true]
-// arr.push('Hur')
+// arr.push('hello')
 // console.log(arr)
 
 // 2
@@ -579,7 +579,7 @@
 
 // 3
 // var arr = ['Ali' , 23 , true]
-// arr.unshift('hf')
+// arr.unshift('hello')
 // console.log(arr)
 
 // 4
@@ -599,7 +599,7 @@
 
 // 2
 // var arr = ['Ali' , 23 , true]
-// arr.splice(1 , 1 , "hh") // starting , delete count and string
+// arr.splice(1 , 1 , "hello") // starting , delete count and string
 // // output ['Ali', 'hh', true]
 // console.log(arr);
 
@@ -691,13 +691,15 @@
 // -----------------------------
 
 // 1
-// for(var i = 1; i<=100; i=i+10){
+// for (var i = 1; i <= 100; i = i + 10) {
 
-//     for(var j=i; j<i+10; j++){
-//     document.writeln(j+' ')
+//   for(var j = i; j < i + 10; j++){
 
-// }
-// document.writeln('<br>')
+//     document.writeln(j + ' ')
+
+//   }
+
+//   document.writeln('<br>')
 // }
 
 // ---------------------------------------
@@ -780,8 +782,8 @@
 // ---------------------------------------
 
 // 1 [charAt()]
-// let name = "Hasnain";
-// let char = name.charAt(3);
+// let userName = "Hasnain";
+// let char = userName.charAt(3);
 // console.log(char);  // Output: "n"
 
 // 2 [Square brackets]
@@ -2977,7 +2979,7 @@
 </script> */
 
 // ---------------------------------------
-// Chapter # 58
+// Chapter # 58 
 // ---------------------------------------
 
 // 1 []
@@ -3401,39 +3403,135 @@
 // Chapter # 74 [Objects: Prototypes]
 // ---------------------------------------
 
-// 1 []
+// 1 [Prototype Basic Example]
+// let person = {
+//   greet: function () {
+//     console.log("Hello World!");
+//   }
+// };
 
+// let user = Object.create(person);
+// user.name = "Hasnain";
 
-// 2 []
+// console.log(user.name);  // Hasnain
+// user.greet();            // Hello World!
 
+// 2 [Function Constructors + Prototype]
+// function Animal(type) {
+//   this.type = type;
+// }
 
-// 3 []
+// // method ko prototype me add kiya
+// Animal.prototype.speak = function () {
+//   console.log(`${this.type} makes a sound`);
+// };
 
+// let dog = new Animal("Dog");
+// let cat = new Animal("Cat");
 
-// 4 []
+// dog.speak();  // Dog makes a sound
+// cat.speak();  // Cat makes a sound
 
+// 3 [Checking Prototype Chain]
+// function Car(brand) {
+//   this.brand = brand;
+// }
 
-// 5 []
+// Car.prototype.drive = function () {
+//   console.log(`${this.brand} is driving`);
+// };
 
+// let c1 = new Car("Toyota");
+
+// console.log(Object.getPrototypeOf(c1) === Car.prototype);  // true
 
 // ---------------------------------------
-// Chapter # 75
+// Chapter # 75 [Objects: Checking for properties and methods]
 // ---------------------------------------
 
-// 1 []
+// 1 [Checking Properties (in operator)]
+// let car = {
+//   brand: "Toyota",
+//   model: "Corolla",
+//   year: 2020
+// };
 
+// console.log("brand" in car);  // true
+// console.log("color" in car);  // false
 
-// 2 []
+// 2 [Using hasOwnProperty()]
+// let user = {
+//   name: "Hasnain",
+//   age: 21
+// };
 
+// console.log(user.hasOwnProperty("name"));   // true
+// console.log(user.hasOwnProperty("email"));  // false
 
-// 3 []
+// 3 [Checking Methods]
+// let student = {
+//   name: "Ali",
+//   study: function() {
+//     return "Studying...";
+//   }
+// };
 
+// console.log("study" in student);                 // true
+// console.log(typeof student.study === "function"); // true
 
-// 4 []
+// 4 [Check property with undefined]
+// let book = {
+//   title: "JavaScript Basics",
+//   pages: 200
+// };
 
+// if (book.author === undefined) {
+//   console.log("Author not found");
+// } else {
+//   console.log("Author:", book.author);
+// }
 
-// 5 []
+// 5 [Check multiple properties]
+// let phone = {
+//   brand: "Samsung",
+//   price: 50000,
+//   call: function() {
+//     return "Calling...";
+//   }
+// };
 
+// ["brand", "camera", "price"].forEach(prop => {
+//   if (prop in phone) {
+//     console.log(prop + " exists ✅");
+//   } else {
+//     console.log(prop + " not found ❌");
+//   }
+// });
+
+// 6 [Method existence check]
+// let person = {
+//   name: "Hasnain",
+//   greet: function() {
+//     return "Hello!";
+//   }
+// };
+
+// if (typeof person.greet === "function") {
+//   console.log("Method 'greet' is available ✅");
+// } else {
+//   console.log("Method 'greet' not found ❌");
+// }
+
+// 7 [Safe property access with ?.]
+// let laptop = {
+//   brand: "HP",
+//   details: {
+//     ram: "16GB"
+//   }
+// };
+
+// console.log(laptop.details?.ram);     // "16GB"
+// console.log(laptop.details?.storage); // undefined (safe check)
 
 // ---------------------------------------
 // Chapter # 76
