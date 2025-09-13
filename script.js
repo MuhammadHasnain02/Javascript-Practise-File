@@ -2979,155 +2979,524 @@
 </script> */
 
 // ---------------------------------------
-// Chapter # 58 
+// Chapter # 58 [The DOM]
 // ---------------------------------------
 
-// 1 []
+// Definition
+// DOM ek tree-like structure hai jo HTML document ko represent karta hai.
+// har ek HTML tag ek node hota hai (document → html → head/body → elements → attributes → text).
+// JavaScript ke through hum DOM ke nodes ko access aur manipulate kar sakte hain.
 
+// Syntax (Access karna)
+// document.getElementById("idName")
+// document.getElementsByClassName("className")
+// document.getElementsByTagName("tagName")
+// document.querySelector("cssSelector")
+// document.querySelectorAll("cssSelector")
 
-// 2 []
+// 1 [Get element by ID]
+// let title = document.getElementById("mainTitle");
+// title.innerText = "Hello DOM!";
 
+// 2 [Get element by Class]
+// let items = document.getElementsByClassName("list-item");
+// items[0].style.color = "red";
 
-// 3 []
+// 3 [Get element by Tag]
+// let paras = document.getElementsByTagName("p");
+// console.log(paras.length);
 
+// 4 [querySelector]
+// let btn = document.querySelector("#submitBtn");
+// btn.style.background = "blue";
 
-// 4 []
+// 5 [querySelectorAll]
+// let allBtns = document.querySelectorAll(".btn");
+// allBtns.forEach(b => b.style.margin = "10px");
 
+// 6 [Changing innerHTML]
+// document.getElementById("content").innerHTML = "<b>New Content</b>";
 
-// 5 []
+// 7 [Changing Attributes]
+// document.getElementById("img").setAttribute("src", "newImage.jpg");
 
+// 8 [Creating Elements]
+// let newDiv = document.createElement("div");
+// newDiv.innerText = "Hello New Div!";
+// document.body.appendChild(newDiv);
 
-// ---------------------------------------
-// Chapter # 59
-// ---------------------------------------
+// 9 [Removing Elements]
+// let para = document.getElementById("removeMe");
+// para.remove();
 
-// 1 []
+// 10 [Adding Event Listener via DOM]
+// document.getElementById("btn").addEventListener("click", () => {
+//   alert("Button clicked via DOM!");
+// });
 
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 60
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 61
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
+// Real Life Uses :
+// 1.Button click hone par text change karna
+// 2.Form fill karne ke baad validation
+// 3.Dynamic content add/remove (e-commerce products, todo list)
+// 4.Images aur attributes update karna
+// 5.Responsive UI build karna
 
 // ---------------------------------------
-// Chapter # 62
+// Chapter # 59 [The DOM: Parents and children]
 // ---------------------------------------
 
-// 1 []
+// Parents & Children Concept :
+// Parent Node: jiske andar element hota hai.
+// Child Node: jo element parent ke andar hota hai.
+// HTML me <div> ke andar <p> ho to <div> parent aur <p> child hai.
 
+// Important Properties / Methods :
+// 1.parentNode → kisi element ka parent dikhata hai.
+// 2.children → sirf element children (no text nodes).
+// 3.childNodes → sari child nodes (text, comment, element sab).
+// 4.firstElementChild → pehla child element.
+// 5.lastElementChild → akhri child element.
+// 6.nextElementSibling → agla bhai element (same parent).
+// 7.previousElementSibling → pichla bhai element.
 
-// 2 []
+// 1 [Access parentNode]
+/* <div id="parent">
+  <p id="child">Hello</p>
+</div>
+<script>
+let c = document.getElementById("child");
+console.log(c.parentNode.id); // parent
+</script> */
 
+// 2 [Access children]
+/* <ul id="list">
+  <li>Apple</li>
+  <li>Mango</li>
+  <li>Banana</li>
+</ul>
+<script>
+let ul = document.getElementById("list");
+console.log(ul.children[0].innerText); // Apple
+</script> */
 
-// 3 []
+// 3 [Using childNodes (text + comment + elements)]
+/* <div id="box">
+  <p>One</p>
+  <p>Two</p>
+</div>
+<script>
+let box = document.getElementById("box");
+console.log(box.childNodes.length); // includes text nodes
+</script> */
 
+// 4 [First and Last child]
+// let ul = document.getElementById("list");
+// console.log(ul.firstElementChild.innerText); // Apple
+// console.log(ul.lastElementChild.innerText);  // Banana
 
-// 4 []
+// 5 [Next & Previous sibling]
+/* <ul>
+  <li id="mango">Mango</li>
+  <li>Banana</li>
+</ul>
+<script>
+let mango = document.getElementById("mango");
+console.log(mango.nextElementSibling.innerText); // Banana
+</script> */
 
-
-// 5 []
-
+// 6 [Traverse from child → parent → child]
+/* <div id="container">
+  <ul>
+    <li id="child1">One</li>
+    <li>Two</li>
+  </ul>
+</div>
+<script>
+let child = document.getElementById("child1");
+console.log(child.parentNode.parentNode.id); // container
+</script> */
 
 // ---------------------------------------
-// Chapter # 63
+// Chapter # 60 [The DOM: Finding children]
 // ---------------------------------------
 
-// 1 []
+// Main Properties & Methods :
+// children → sirf element nodes return karta hai (text/comment ignore).
+// childNodes → sari nodes (text, comment, element sab) return karta hai.
+// firstElementChild → parent ka pehla child element.
+// lastElementChild → parent ka last child element.
+// querySelector/querySelectorAll → parent ke andar specific child find karna.
 
+// 1 [Get all children using .children]
+/* <ul id="fruits">
+  <li>Apple</li>
+  <li>Mango</li>
+  <li>Banana</li>
+</ul>
+<script>
+let ul = document.getElementById("fruits");
+console.log(ul.children);        // HTMLCollection
+console.log(ul.children[1].innerText); // Mango
+</script> */
 
-// 2 []
+// 2 [Using .childNodes (text + comments bhi)]
+/* <div id="box">
+  <p>One</p>
+  <p>Two</p>
+</div>
+<script>
+let box = document.getElementById("box");
+console.log(box.childNodes.length); // text nodes bhi count honge
+</script> */
 
+// 3 [First and last child]
+// let ul = document.getElementById("fruits");
+// console.log(ul.firstElementChild.innerText); // Apple
+// console.log(ul.lastElementChild.innerText);  // Banana
 
-// 3 []
+// 4 [Loop through children]
+// for (let child of ul.children) {
+//   console.log("Fruit: " + child.innerText);
+// }
 
-
-// 4 []
-
-
-// 5 []
-
+// 5 [Find specific child inside parent]
+/* <div id="container">
+  <p class="info">First</p>
+  <p class="info">Second</p>
+</div>
+<script>
+let container = document.getElementById("container");
+let second = container.querySelectorAll(".info")[1];
+console.log(second.innerText); // Second
+</script> */
 
 // ---------------------------------------
-// Chapter # 64
+// Chapter # 61 [The DOM: Junk artifacts and nodeType]
 // ---------------------------------------
 
-// 1 []
+// Junk Artifacts kya hote hain? :
+// jab hum .childNodes use karte hain to sirf elements hi nahi, balki:
+// whitespace (line breaks, tabs)
+// text nodes (jo blank space hote hain)
+// comment nodes
+// sab aajate hain → yehi “junk artifacts” kehlate hain.
 
+// nodeType Property
+// nodeType ek number return karta hai jo node ka type batata hai.
 
-// 2 []
+// Common Values:
+// 1 → Element Node (<div>, <p>, <li>, etc.)
+// 3 → Text Node (spaces, text content)
+// 8 → Comment Node (<!-- comment -->)
 
+// 1 [Junk artifacts with childNodes]
+/* <ul id="list">
+  <li>Apple</li>
+  <li>Mango</li>
+  <li>Banana</li>
+</ul>
+<script>
+let ul = document.getElementById("list");
+console.log(ul.childNodes); 
+// Text nodes (whitespace) bhi count honge
+</script> */
 
-// 3 []
+// 2 [Filtering by nodeType]
+// ul.childNodes.forEach(node => {
+//   if (node.nodeType === 1) { // element node
+//     console.log("Element: " + node.innerText);
+//   }
+// });
 
+// 3 [Detect text node]
+// ul.childNodes.forEach(node => {
+//   if (node.nodeType === 3) {
+//     console.log("Text node found (junk)");
+//   }
+// });
 
-// 4 []
+// 4 [Detect comment node]
+/* <div id="box">
+  <!-- This is a comment -->
+  <p>Hello</p>
+</div>
+<script>
+let box = document.getElementById("box");
+box.childNodes.forEach(node => {
+  if (node.nodeType === 8) {
+    console.log("Comment node found");
+  }
+});
+</script> */
 
-
-// 5 []
-
+// 5 [Cleaner alternative: .children]
+// console.log(ul.children); 
+// // sirf elements aayenge, junk artifacts nahi
 
 // ---------------------------------------
-// Chapter # 65
+// Chapter # 62 [ The DOM: More ways to target elements]
 // ---------------------------------------
 
-// 1 []
+// Common Selection Methods :
+// 1.getElementById → ek element by ID
+// 2.getElementsByClassName → elements by class
+// 3.getElementsByTagName → elements by tag name
+// 4.querySelector → CSS selector se ek element
+// 5.querySelectorAll → CSS selector se multiple elements
 
+// 1 [getElementById]
+/* <p id="msg">Hello World</p>
+<script>
+let el = document.getElementById("msg");
+console.log(el.innerText);  // Hello World
+</script> */
 
-// 2 []
+// 2 [getElementsByClassName]
+/* <p class="note">First Note</p>
+<p class="note">Second Note</p>
+<script>
+let notes = document.getElementsByClassName("note");
+console.log(notes[0].innerText); // First Note
+console.log(notes[1].innerText); // Second Note
+</script> */
 
+// 3 [getElementsByTagName]
+/* <ul>
+  <li>Apple</li>
+  <li>Mango</li>
+</ul>
+<script>
+let items = document.getElementsByTagName("li");
+for (let item of items) {
+  console.log(item.innerText);
+}
+</script> */
 
-// 3 []
+// 4 [querySelector (first match only)]
+/* <div>
+  <p class="info">One</p>
+  <p class="info">Two</p>
+</div>
+<script>
+let first = document.querySelector(".info");
+console.log(first.innerText); // One
+</script> */
 
+// 5 [querySelectorAll (all matches)]
+/* <div>
+  <p class="info">One</p>
+  <p class="info">Two</p>
+</div>
+<script>
+let all = document.querySelectorAll(".info");
+all.forEach(el => console.log(el.innerText));
+</script> */
 
-// 4 []
+// 6 [Select nested elements]
+// let container = document.querySelector("div");
+// let para = container.querySelector("p");
+// console.log(para.innerText);
 
+// 7 [Select by attribute]
+/* <input type="text" name="username">
+<script>
+let userInput = document.querySelector("input[name='username']");
+console.log(userInput);
+</script> */
 
-// 5 []
+// 8 [Select nth-child]
+/* <ul>
+  <li>One</li>
+  <li>Two</li>
+  <li>Three</li>
+</ul>
+<script>
+let second = document.querySelector("ul li:nth-child(2)");
+console.log(second.innerText); // Two
+</script> */
+
+// 9 [Select with multiple selectors]
+// let el = document.querySelector("p.info, span.note");
+// console.log(el);
+
+// 10 [Using IDs inside querySelector]
+// let el = document.querySelector("#msg");
+// console.log(el.innerText);
+
+// ---------------------------------------
+// Chapter # 63 [The DOM: Getting a target's name]
+// ---------------------------------------
+
+// Important Concept :
+// event.target → wo element return karta hai jis par event trigger hua.
+// event.target.name → agar us element me name attribute hoga to uski value milegi.
+// Useful jab forms, inputs, radio buttons, dropdowns ke sath kaam karna ho.
+
+// 1 [Input field name]
+/* <input type="text" name="username" placeholder="Enter username">
+
+<script>
+document.querySelector("input").addEventListener("input", function(e) {
+  console.log("Target name: " + e.target.name); // username
+});
+</script> */
+
+// 2 [Multiple inputs]
+/* <input type="text" name="firstName" placeholder="First Name">
+<input type="text" name="lastName" placeholder="Last Name">
+
+<script>
+document.querySelectorAll("input").forEach(inp => {
+  inp.addEventListener("focus", e => {
+    console.log("Focused input name: " + e.target.name);
+  });
+});
+</script> */
+
+// 3 [Radio buttons]
+/* <form>
+  <input type="radio" name="gender" value="male"> Male
+  <input type="radio" name="gender" value="female"> Female
+</form>
+
+<script>
+document.querySelectorAll("input[type=radio]").forEach(radio => {
+  radio.addEventListener("change", e => {
+    console.log("Target name: " + e.target.name); // gender
+    console.log("Selected value: " + e.target.value);
+  });
+});
+</script> */
+
+// 4 [Dropdown select]
+/* <select name="country">
+  <option>Pakistan</option>
+  <option>India</option>
+</select>
+
+<script>
+document.querySelector("select").addEventListener("change", e => {
+  console.log("Target name: " + e.target.name); // country
+});
+</script> */
+
+// 5 [Button click]
+/* <button name="loginBtn">Login</button>
+<button name="signupBtn">Signup</button>
+
+<script>
+document.querySelectorAll("button").forEach(btn => {
+  btn.addEventListener("click", e => {
+    console.log("Clicked button name: " + e.target.name);
+  });
+});
+</script> */
+
+// ---------------------------------------
+// Chapter # 64 [The DOM: Counting elements]
+// ---------------------------------------
+
+// Common Methods :
+// .length → jab collection milta hai (getElementsByTagName, getElementsByClassName, querySelectorAll)
+// childElementCount → parent ke andar kitne element children hain
+// children.length → child elements ka count
+// childNodes.length → saare nodes ka count (junk artifacts bhi include)
+
+// 1 [Count all paragraphs]
+/* <p>One</p>
+<p>Two</p>
+<p>Three</p>
+
+<script>
+let paras = document.getElementsByTagName("p");
+console.log("Total paragraphs: " + paras.length); // 3
+</script> */
+
+// 2 [Count elements by class]
+/* <div class="note">Note 1</div>
+<div class="note">Note 2</div>
+<script>
+let notes = document.getElementsByClassName("note");
+console.log("Total notes: " + notes.length); // 2
+</script> */
+
+// 3 [Count with querySelectorAll]
+/* <ul>
+  <li>Apple</li>
+  <li>Mango</li>
+  <li>Banana</li>
+</ul>
+<script>
+let items = document.querySelectorAll("ul li");
+console.log("Total items: " + items.length); // 3
+</script> */
+
+// 4 [Count children of a parent]
+/* <div id="box">
+  <p>One</p>
+  <p>Two</p>
+</div>
+<script>
+let box = document.getElementById("box");
+console.log("Child elements: " + box.childElementCount); // 2
+</script> */
+
+// 5 [Count including junk artifacts (childNodes)]
+/* <div id="container">
+  <p>One</p>
+  <p>Two</p>
+</div>
+<script>
+let cont = document.getElementById("container");
+console.log("Child nodes: " + cont.childNodes.length); // whitespace bhi count hoga
+</script> */
+
+// ---------------------------------------
+// Chapter # 65 []
+// ---------------------------------------
+
+// Important Methods :
+// getAttribute("attr") → attribute ki value read karne ke liye
+// setAttribute("attr","value") → attribute set/update karne ke liye
+// removeAttribute("attr") → attribute delete karne ke liye
+// hasAttribute("attr") → check karne ke liye attribute exist karta hai ya nahi
+// element.id / element.className / element.src → direct property access
+
+// 1 [Get attribute]
+/* <a id="myLink" href="https://google.com">Google</a>
+<script>
+let link = document.getElementById("myLink");
+console.log(link.getAttribute("href")); // https://google.com
+</script> */
+
+// 2 [Set/Update attribute]
+// link.setAttribute("href", "https://youtube.com");
+// console.log(link.getAttribute("href")); // https://youtube.com
+
+// 3 [Remove attribute]
+// link.removeAttribute("href");
+// console.log(link.getAttribute("href")); // null
+
+// 4 [Check attribute existence]
+// console.log(link.hasAttribute("href")); // false (remove karne ke baad)
+
+// 5 [Direct property access]
+/* <img id="logo" src="logo.png" alt="Website Logo">
+<script>
+let img = document.getElementById("logo");
+console.log(img.src);         // full URL path
+img.src = "new-logo.png";     // change image
+console.log(img.alt);         // Website Logo
+</script> */
+
+// 6 [Add custom attribute]
+// link.setAttribute("data-user", "Hasnain");
+// console.log(link.getAttribute("data-user")); // Hasnain
+
+// 7 [Class attribute special handling]
+// link.setAttribute("class", "btn btn-primary");
+// console.log(link.className); // btn btn-primary
+
 
 
 // ---------------------------------------
@@ -3445,6 +3814,22 @@
 
 // console.log(Object.getPrototypeOf(c1) === Car.prototype);  // true
 
+// 4 [Inheriting Methods]
+// function Animal(name) {
+//   this.name = name;
+// }
+// Animal.prototype.speak = function() {
+//   console.log(this.name + " makes a sound.");
+// };
+
+// function Dog(name) {
+//   Animal.call(this, name);
+// }
+// Dog.prototype = Object.create(Animal.prototype);
+
+// let dog = new Dog("Tommy");
+// dog.speak();
+
 // ---------------------------------------
 // Chapter # 75 [Objects: Checking for properties and methods]
 // ---------------------------------------
@@ -3534,267 +3919,980 @@
 // console.log(laptop.details?.storage); // undefined (safe check)
 
 // ---------------------------------------
-// Chapter # 76
+// Chapter # 76 [ Browser control: Getting and setting the URL]
 // ---------------------------------------
 
-// 1 []
+// 1 [window.location.href (Get URL)]
+// console.log(window.location.href);
 
+// 2 [window.location.href (Set URL / Redirect)]
+// window.location.href = "https://google.com";
 
-// 2 []
+// 3 [window.location.assign()]
+// window.location.assign("https://youtube.com");
 
+// 4 [window.location.replace()]
+// window.location.replace("https://github.com");
 
-// 3 []
+// 5 [window.location.reload()]
+// window.location.reload();
 
+// 6 [window.open()]
+// window.open("https://google.com", "_blank");
 
-// 4 []
+// 7 [setTimeout()]
+// setTimeout(() => {
+//   console.log("Hello after 3 seconds");
+// }, 3000);
 
+// 8 [setInterval()]
+// setInterval(() => {
+  // console.log("Repeating every 2 seconds");
+// }, 2000);
 
-// 5 []
+// 9 [history.back() & history.forward()]
+// // Go back
+// history.back();
 
-
-// ---------------------------------------
-// Chapter # 77
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 78
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
+// // Go forward
+// history.forward();
 
 
 // ---------------------------------------
-// Chapter # 79
+// Chapter # 77 [Browser control: Getting and setting the URL another way]
 // ---------------------------------------
 
-// 1 []
+// 1 [window.location.host]
+// console.log(window.location.host);
 
+// 2 [window.location.hostname]
+// console.log(window.location.hostname);
 
-// 2 []
+// 3 [window.location.pathname]
+// console.log(window.location.pathname);
 
+// 4 [window.location.search]
+// console.log(window.location.search);
 
-// 3 []
+// 5 [URLSearchParams (modern way for query string)]
+// let params = new URLSearchParams(window.location.search);
+// console.log(params.get("id"));
 
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 80
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
+// Summary:
+// host → domain + port
+// hostname → sirf domain
+// pathname → page ka path
+// search → query string
+// URLSearchParams → query string se values nikalna easy way
 
 // ---------------------------------------
-// Chapter # 81
+// Chapter # 78 [Browser control: Forward and reverse]
 // ---------------------------------------
 
-// 1 []
+// 1 [history.back()]
+// history.back();
 
+// 2 [history.forward()]
+// history.forward();
 
-// 2 []
+// 3 [history.go(-1)]
+// history.go(-1);
 
+// 4 [history.go(1)]
+// history.go(1);
 
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 82
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
+// 5 [history.go(n)]
+// history.go(-2); // 2 steps back
+// history.go(3);  // 3 steps forward
 
 // ---------------------------------------
-// Chapter # 83
+// Chapter # 79 [Browser control: Filling the window with content]
 // ---------------------------------------
 
-// 1 []
+// 1 [document.write()]
+// document.writeln("<h1>Hello, World!</h1>");
 
+// 2 [document.body.innerHTML]
+// document.body.innerHTML = "<h2>Full Page Content Loaded!</h2>";
 
-// 2 []
+// 3 [window.open() with document.write()]
+// let win = window.open("", "", "width=400,height=300");
+// win.document.writeln("<p>This is a new window with custom content</p>");
 
+// 4 [iframe contentWindow]
+// let frame = document.getElementById("myFrame");
+// frame.contentWindow.document.write("<h3>Iframe Filled with Content</h3>");
 
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 84
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
+// 5 [Using innerText for plain content]
+// document.body.innerText = "This will replace whole window with plain text.";
 
 // ---------------------------------------
-// Chapter # 85
+// Chapter # 80 [Browser control: Controlling the window's size and location]
 // ---------------------------------------
 
-// 1 []
+// 1 [window.resizeTo(width, height)]
+// let win = window.open("", "", "width=200,height=200");
+// win.resizeTo(600, 400);
 
+// 2 [window.resizeBy(x, y)]
+// let win = window.open("", "", "width=300,height=200");
+// win.resizeBy(200, 100);
 
-// 2 []
+// 3 [window.moveTo(x, y)]
+// let win = window.open("", "", "width=300,height=200");
+// win.moveTo(100, 100);
 
+// 4 [window.moveBy(x, y)]
+// let win = window.open("", "", "width=300,height=200");
+// win.moveBy(50, 50);
 
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
-
-// ---------------------------------------
-// Chapter # 86
-// ---------------------------------------
-
-// 1 []
-
-
-// 2 []
-
-
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
+// 5 [window.screen properties]
+// console.log(window.screen.width);
+// console.log(window.screen.height);
 
 // ---------------------------------------
-// Chapter # 87
+// Chapter # 81 [Browser control: Testing for popup blockers]
 // ---------------------------------------
 
-// 1 []
+// 1 [Basic popup test with window.open()]
+// let popup = window.open("", "", "width=200,height=100");
+// if (!popup) {
+//   console.log("Popup blocked!");
+// } else {
+//   console.log("Popup allowed!");
+//   popup.close();
+// }
 
+// 2 [Checking popup.document]
+// let popup = window.open("about:blank", "", "width=200,height=100");
+// try {
+//   if (popup && popup.document) {
+//     console.log("Popup working fine!");
+//   }
+// } catch (e) {
+//   console.log("Popup blocked!");
+// }
 
-// 2 []
+// 3 [Focus test]
+// let popup = window.open("", "", "width=200,height=100");
+// if (popup) {
+//   popup.focus();
+//   console.log("Popup active");
+// } else {
+//   console.log("Popup blocked");
+// }
 
+// 4 [Popup with delay]
+// setTimeout(() => {
+//   let popup = window.open("", "", "width=200,height=100");
+//   if (!popup) {
+//     alert("Please allow popups for this site!");
+//   }
+// }, 1000);
 
-// 3 []
-
-
-// 4 []
-
-
-// 5 []
-
+// 5 [Detecting popup close (extra check)]
+// let popup = window.open("", "", "width=200,height=100");
+// if (popup) {
+//   let timer = setInterval(() => {
+//     if (popup.closed) {
+//       clearInterval(timer);
+//       console.log("Popup closed by user.");
+//     }
+//   }, 500);
+// } else {
+//   console.log("Popup blocked!");
+// }
 
 // ---------------------------------------
-// Chapter # 88
+// Chapter # 82 [Form validation: text fields]
 // ---------------------------------------
 
-// 1 []
+// 1 [Get and Set dynamically]
+/* <input type="text" id="city" placeholder="Enter city">
+<button onclick="copyCity()">Copy</button>
+<input type="text" id="copyCity">
+<script>
+function copyCity() {
+  let val = document.getElementById("city").value;
+  document.getElementById("copyCity").value = val;
+}
+</script> */
 
+// 2 [Get/Set using form elements]
+/* <form id="myForm">
+  <input type="text" name="username" value="DefaultUser">
+  <button type="button" onclick="changeUser()">Change</button>
+</form>
 
-// 2 []
+<script>
+function changeUser() {
+  let form = document.getElementById("myForm");
+  alert("Old Value: " + form.username.value);
+  form.username.value = "NewUser123";
+}
+</script> */
 
+// 3 [Required field check]
+/* <input type="text" id="username" placeholder="Enter username">
+<button onclick="checkUser()">Submit</button>
 
-// 3 []
+<script>
+function checkUser() {
+  let user = document.getElementById("username").value;
+  if (user === "") {
+    alert("Username is required!");
+  } else {
+    alert("Welcome " + user);
+  }
+}
+</script> */
 
+// 4 [Minimum length check]
+/* <input type="text" id="password" placeholder="Enter password">
+<button onclick="checkPass()">Submit</button>
 
-// 4 []
+<script>
+function checkPass() {
+  let pass = document.getElementById("password").value;
+  if (pass.length < 6) {
+    alert("Password must be at least 6 characters!");
+  } else {
+    alert("Password looks good.");
+  }
+}
+</script> */
 
+// 5 [Email format validation]
+/* <input type="text" id="email" placeholder="Enter email">
+<button onclick="checkEmail()">Submit</button>
 
-// 5 []
+<script>
+function checkEmail() {
+  let email = document.getElementById("email").value;
+  let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!email.match(pattern)) {
+    alert("Invalid email address!");
+  } else {
+    alert("Email is valid.");
+  }
+}
+</script> */
 
+// 6 [Only letters allowed]
+/* <input type="text" id="name" placeholder="Enter your name">
+<button onclick="checkName()">Submit</button>
+
+<script>
+function checkName() {
+  let name = document.getElementById("name").value;
+  let letters = /^[A-Za-z ]+$/;
+  if (!name.match(letters)) {
+    alert("Only letters are allowed!");
+  } else {
+    alert("Name looks good.");
+  }
+}
+</script> */
+
+// 7 [Using HTML5 attributes]
+/* <form>
+  <input type="text" name="fullname" placeholder="Enter full name" required minlength="3">
+  <input type="email" name="email" placeholder="Enter email" required>
+  <button type="submit">Submit</button>
+</form> */
 
 // ---------------------------------------
-// Chapter # 89
+// Chapter # 83 [Form validation: drop-downs]
 // ---------------------------------------
 
-// 1 []
+// 1 [Get selected value]
+/* <select id="country">
+  <option value="pk">Pakistan</option>
+  <option value="in">India</option>
+  <option value="uk">United Kingdom</option>
+</select>
+<button onclick="getCountry()">Get Value</button>
+
+<script>
+function getCountry() {
+  let val = document.getElementById("country").value;
+  alert("Selected: " + val);
+}
+</script> */
+
+// 2 [Set selected value]
+/* <select id="lang">
+  <option value="en">English</option>
+  <option value="ur">Urdu</option>
+  <option value="ar">Arabic</option>
+</select>
+<button onclick="setLang()">Set Urdu</button>
+
+<script>
+function setLang() {
+  document.getElementById("lang").value = "ur";
+}
+</script> */
+
+// 3 [Get selected text (not value)]
+/* <select id="city">
+  <option value="karachi">Karachi</option>
+  <option value="lahore">Lahore</option>
+  <option value="islamabad">Islamabad</option>
+</select>
+<button onclick="getCityText()">Get Text</button>
+
+<script>
+function getCityText() {
+  let sel = document.getElementById("city");
+  let text = sel.options[sel.selectedIndex].text;
+  alert("Selected Text: " + text);
+}
+</script> */
+
+// 4 [Dynamically add new option]
+/* <select id="fruits">
+  <option value="apple">Apple</option>
+  <option value="banana">Banana</option>
+</select>
+<button onclick="addFruit()">Add Mango</button>
+
+<script>
+function addFruit() {
+  let sel = document.getElementById("fruits");
+  let opt = new Option("Mango", "mango");
+  sel.add(opt);
+}
+</script> */
+
+// 5 [Loop through all options]
+/* <select id="cars">
+  <option value="honda">Honda</option>
+  <option value="toyota">Toyota</option>
+  <option value="suzuki">Suzuki</option>
+</select>
+<button onclick="listCars()">Show All</button>
+
+<script>
+function listCars() {
+  let sel = document.getElementById("cars");
+  let all = [];
+  for (let i = 0; i < sel.options.length; i++) {
+    all.push(sel.options[i].text);
+  }
+  alert("Cars: " + all.join(", "));
+}
+</script> */
+
+// ---------------------------------------
+// Chapter # 84 [Form validation: radio buttons]
+// ---------------------------------------
+
+// 1 [Get selected value]
+/* <form>
+  <label><input type="radio" name="gender" value="Male"> Male</label>
+  <label><input type="radio" name="gender" value="Female"> Female</label>
+  <button type="button" onclick="getGender()">Check</button>
+</form>
+
+<script>
+function getGender() {
+  let val = document.querySelector('input[name="gender"]:checked');
+  if (val) {
+    alert("Selected: " + val.value);
+  } else {
+    alert("No option selected!");
+  }
+}
+</script> */
+
+// 2 [Set default checked]
+/* <form>
+  <label><input type="radio" name="role" value="Student"> Student</label>
+  <label><input type="radio" name="role" value="Teacher"> Teacher</label>
+</form>
+
+<script>
+document.querySelector('input[value="Teacher"]').checked = true;
+</script> */
+
+// 3 [Validation (must select one)]
+/* <form id="regForm">
+  <label><input type="radio" name="plan" value="Free"> Free</label>
+  <label><input type="radio" name="plan" value="Premium"> Premium</label>
+  <button type="button" onclick="validatePlan()">Submit</button>
+</form>
+
+<script>
+function validatePlan() {
+  let choice = document.querySelector('input[name="plan"]:checked');
+  if (!choice) {
+    alert("Please select a plan!");
+  } else {
+    alert("You selected: " + choice.value);
+  }
+}
+</script> */
+
+// 4 [Get all options in group]
+/* <form>
+  <label><input type="radio" name="color" value="Red"> Red</label>
+  <label><input type="radio" name="color" value="Green"> Green</label>
+  <label><input type="radio" name="color" value="Blue"> Blue</label>
+</form>
+
+<script>
+let radios = document.getElementsByName("color");
+for (let r of radios) {
+  console.log("Option: " + r.value);
+}
+</script> */
+
+// 5 [Change event listener]
+/* <form>
+  <label><input type="radio" name="payment" value="Card"> Card</label>
+  <label><input type="radio" name="payment" value="Cash"> Cash</label>
+</form>
+
+<script>
+let payments = document.getElementsByName("payment");
+payments.forEach(p => {
+  p.addEventListener("change", () => {
+    alert("You selected: " + p.value);
+  });
+});
+</script> */
+
+// ---------------------------------------
+// Chapter # 85 [Form validation: ZIP codes]
+// ---------------------------------------
+
+// 1 [Basic ZIP code length check]
+/* <input type="text" id="zip" placeholder="Enter ZIP code">
+<button onclick="checkZip()">Validate</button>
+
+<script>
+function checkZip() {
+  let zip = document.getElementById("zip").value;
+  if (zip.length === 5) {
+    alert("Valid ZIP code ✅");
+  } else {
+    alert("ZIP must be 5 digits ❌");
+  }
+}
+</script> */
+
+// 2 [Check only digits (numeric)]
+/* <input type="text" id="zip2" placeholder="ZIP code (only numbers)">
+<button onclick="validateZipNum()">Check</button>
+
+<script>
+function validateZipNum() {
+  let zip = document.getElementById("zip2").value;
+  if (/^\d+$/.test(zip)) {
+    alert("Only numbers entered ✅");
+  } else {
+    alert("ZIP code must contain only digits ❌");
+  }
+}
+</script> */
+
+// 3 [Combine digits + length (5 digit ZIP)]
+/* <input type="text" id="zip3" placeholder="Enter ZIP (5 digits)">
+<button onclick="checkZip5()">Check</button>
+
+<script>
+function checkZip5() {
+  let zip = document.getElementById("zip3").value;
+  if (/^\d{5}$/.test(zip)) {
+    alert("Valid ZIP ✅");
+  } else {
+    alert("ZIP must be exactly 5 digits ❌");
+  }
+}
+</script> */
+
+// 4 [ZIP + 4 format (like 12345-6789)]
+/* <input type="text" id="zip4" placeholder="12345-6789">
+<button onclick="validateZipPlus4()">Check</button>
+
+<script>
+function validateZipPlus4() {
+  let zip = document.getElementById("zip4").value;
+  if (/^\d{5}(-\d{4})?$/.test(zip)) {
+    alert("Valid ZIP+4 ✅");
+  } else {
+    alert("Format must be 12345 or 12345-6789 ❌");
+  }
+}
+</script> */
+
+// 5 [Country-specific ZIP check (example: Pakistan)]
+/* <input type="text" id="pkzip" placeholder="PK ZIP (5 digits)">
+<button onclick="validatePkZip()">Check</button>
+
+<script>
+function validatePkZip() {
+  let zip = document.getElementById("pkzip").value;
+  if (/^\d{5}$/.test(zip)) {
+    alert("Valid Pakistan ZIP ✅");
+  } else {
+    alert("Pakistani ZIP must be 5 digits ❌");
+  }
+}
+</script> */
+
+// ---------------------------------------
+// Chapter # 86 [Form validation: email]
+// ---------------------------------------
+
+// 1 [Basic check (@ hona chahiye)]
+/* <input type="text" id="email1" placeholder="Enter email">
+<button onclick="checkEmail1()">Validate</button>
+
+<script>
+function checkEmail1() {
+  let email = document.getElementById("email1").value;
+  if (email.includes("@")) {
+    alert("Valid email ✅");
+  } else {
+    alert("Email must contain '@' ❌");
+  }
+}
+</script */
+
+// 2 [Basic regex check (username@domain)]
+/* <input type="text" id="email2" placeholder="Enter email">
+<button onclick="checkEmail2()">Validate</button>
+
+<script>
+function checkEmail2() {
+  let email = document.getElementById("email2").value;
+  let pattern = /^\S+@\S+\.\S+$/;
+  if (pattern.test(email)) {
+    alert("Valid email ✅");
+  } else {
+    alert("Invalid email ❌");
+  }
+}
+</script> */
+
+// 3 [Advance regex (standard email format)]
+/* <input type="text" id="email3" placeholder="Enter email">
+<button onclick="checkEmail3()">Validate</button>
+
+<script>
+function checkEmail3() {
+  let email = document.getElementById("email3").value;
+  let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
+  if (pattern.test(email)) {
+    alert("Valid email ✅");
+  } else {
+    alert("Invalid email ❌");
+  }
+}
+</script> */
+
+// 4 [HTML5 built-in validation]
+/* <form>
+  <input type="email" id="email4" required>
+  <button type="submit">Submit</button>
+</form> */
+
+// 5 [Prevent invalid email before submit]
+/* <form onsubmit="return validateForm()">
+  <input type="text" id="email5" placeholder="Enter email">
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+function validateForm() {
+  let email = document.getElementById("email5").value;
+  let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!pattern.test(email)) {
+    alert("Please enter a valid email ❌");
+    return false; // prevent submit
+  }
+  return true;
+}
+</script> */
+
+// ---------------------------------------
+// Chapter # 87 [Exceptions: try and catch]
+// ---------------------------------------
+
+// 1 [Syntax (basic)]
+// try {
+//   // code that may throw error
+// } catch (error) {
+//   // error handle karne ka code
+// } finally {
+//   // (optional) hamesha run hota hai
+// }
 
 
-// 2 []
+// 2 [Basic error handling]
+// try {
+//   let x = y + 5; // y defined nahi hai
+// } catch (err) {
+//   console.log("Error: " + err.message);
+// }
 
+// 3 [Multiple safe code blocks]
+// try {
+//   console.log("Start");
+//   let num = 10 / 0;
+//   console.log(num);
+// } catch (err) {
+//   console.log("Something went wrong!");
+// }
 
-// 3 []
+// 4 [finally block (always run)]
+// try {
+//   let data = JSON.parse("{name: 'Ali'}"); // invalid JSON
+// } catch (err) {
+//   console.log("Invalid JSON!");
+// } finally {
+//   console.log("Parsing attempt finished.");
+// }
 
+// 5 [Custom error throw + catch]
+// try {
+//   let age = -5;
+//   if (age < 0) throw new Error("Age cannot be negative!");
+// } catch (err) {
+//   console.log("Caught: " + err.message);
+// }
 
-// 4 []
+// 6 [Divide by zero check]
+// function divide(a, b) {
+//   try {
+//     if (b === 0) throw new Error("Cannot divide by zero!");
+//     return a / b;
+//   } catch (err) {
+//     return err.message;
+//   }
+// }
+// console.log(divide(10, 0));
 
+// 7 [JSON validation]
+// try {
+//   let json = '{"name":"Hasnain","age":22}';
+//   let user = JSON.parse(json);
+//   console.log(user.name);
+// } catch (err) {
+//   console.log("Invalid JSON data");
+// }
 
-// 5 []
+// 8 [Nested try...catch]
+// try {
+//   try {
+//     let arr = null;
+//     console.log(arr.length); // error
+//   } catch (innerErr) {
+//     console.log("Inner error: " + innerErr.message);
+//   }
+// } catch (outerErr) {
+//   console.log("Outer error: " + outerErr.message);
+// }
 
+// 9 [Function error handling]
+// function getUser(obj) {
+//   try {
+//     return obj.name.toUpperCase();
+//   } catch (err) {
+//     return "Invalid user object!";
+//   }
+// }
+// console.log(getUser({})); 
+
+// 10 [Async code with try/catch (Promise)]
+// async function fetchData() {
+//   try {
+//     let res = await fetch("https://invalid-url");
+//     let data = await res.json();
+//     console.log(data);
+//   } catch (err) {
+//     console.log("Fetch failed: " + err.message);
+//   }
+// }
+// fetchData();
+
+// 11 [Typical real-world form validation]
+// function validateEmail(email) {
+//   try {
+//     if (!email.includes("@")) throw new Error("Email must contain @");
+//     if (!email.includes(".")) throw new Error("Email must contain .");
+//     return "Valid email ✅";
+//   } catch (err) {
+//     return "Error: " + err.message;
+//   }
+// }
+// console.log(validateEmail("testgmailcom"));
+
+// ---------------------------------------
+// Chapter # 88 [Exceptions: throw]
+// ---------------------------------------
+
+// Syntax
+// throw expression;
+
+// 1 [Throw string]
+// try {
+//   throw "Something went wrong!";
+// } catch (err) {
+//   console.log("Error: " + err);
+// }
+
+// 2 [Throw number]
+// try {
+//   throw 404;
+// } catch (err) {
+//   console.log("Error Code: " + err);
+// }
+
+// 3 [Throw object]
+// try {
+//   throw { message: "Invalid Input", code: 400 };
+// } catch (err) {
+//   console.log(err.code + ": " + err.message);
+// }
+
+// 4 [Throw new Error()]
+// try {
+//   throw new Error("Custom error occurred!");
+// } catch (err) {
+//   console.log(err.name + ": " + err.message);
+// }
+
+// 5 [Throw in function]
+// function divide(a, b) {
+//   if (b === 0) {
+//     throw new Error("Cannot divide by zero!");
+//   }
+//   return a / b;
+// }
+
+// try {
+//   console.log(divide(10, 0));
+// } catch (err) {
+//   console.log(err.message);
+// }
+
+// 6 [Nested throw/catch]
+// try {
+//   try {
+//     throw new Error("Inner error");
+//   } catch (e) {
+//     console.log("Caught inside: " + e.message);
+//     throw e; // re-throw
+//   }
+// } catch (e) {
+//   console.log("Caught outside: " + e.message);
+// }
+
+// 7 [Throw in JSON parsing]
+// function parseJSON(str) {
+//   try {
+//     return JSON.parse(str);
+//   } catch {
+//     throw new Error("Invalid JSON format!");
+//   }
+// }
+
+// try {
+//   parseJSON("{name:'Ali'}");
+// } catch (err) {
+//   console.log(err.message);
+// }
+
+// 8 [Throw in async function]
+// async function getData() {
+//   let ok = false;
+//   if (!ok) throw new Error("Data not available!");
+//   return "Data found";
+// }
+
+// getData()
+//   .then(res => console.log(res))
+//   .catch(err => console.log("Caught: " + err.message));
+
+// 9 [Typical: Email validation with throw]
+// function validateEmail(email) {
+//   if (!email.includes("@")) throw new Error("Email must contain @");
+//   if (!email.includes(".")) throw new Error("Email must contain .");
+//   return "Valid email ✅";
+// }
+
+// try {
+//   console.log(validateEmail("testgmailcom"));
+// } catch (err) {
+//   console.log("Error: " + err.message);
+// }
+
+// ---------------------------------------
+// Chapter # 89 [Handling events within JavaScript]
+// ---------------------------------------
+
+// Syntax
+// element.addEventListener("eventName", function);
+/* <button onclick="myFunc()">Click me</button> */
+
+// 1 [Button click event]
+/* <button id="btn">Click me</button>
+<script>
+document.getElementById("btn").addEventListener("click", () => {
+  alert("Button clicked!");
+});
+</script> */
+
+// 2 [Mouse over event]
+/* <div id="box" style="width:100px;height:100px;background:lightblue"></div>
+<script>
+document.getElementById("box").addEventListener("mouseover", () => {
+  console.log("Mouse entered the box!");
+});
+</script> */
+
+// 3 [Mouse out event]
+/* <div id="box2" style="width:100px;height:100px;background:lightgreen"></div>
+<script>
+document.getElementById("box2").addEventListener("mouseout", () => {
+  console.log("Mouse left the box!");
+});
+</script> */
+
+// 4 [Input field ke andar typing (keyup)]
+/* <input type="text" id="name" placeholder="Type something...">
+<script>
+document.getElementById("name").addEventListener("keyup", (e) => {
+  console.log("You typed: " + e.target.value);
+});
+</script> */
+
+// 5 [Form submit event]
+/* <form id="myForm">
+  <input type="text" required>
+  <button type="submit">Submit</button>
+</form>
+<script>
+document.getElementById("myForm").addEventListener("submit", (e) => {
+  e.preventDefault(); // page reload stop
+  console.log("Form submitted!");
+});
+</script> */
+
+// 6 [Double click event]
+/* <p id="para">Double click me!</p>
+<script>
+document.getElementById("para").addEventListener("dblclick", () => {
+  alert("You double clicked!");
+});
+</script> */
+
+// 7 [Keyboard event (Enter key)]
+/* <input type="text" id="inp" placeholder="Press Enter">
+<script>
+document.getElementById("inp").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    alert("Enter pressed!");
+  }
+});
+</script> */
+
+// 8 [Window resize event]
+/* <script>
+window.addEventListener("resize", () => {
+  console.log("Window resized: " + window.innerWidth + "px");
+});
+</script> */
+
+// 9 [Change event on dropdown]
+/* <select id="city">
+  <option value="">Select City</option>
+  <option value="Karachi">Karachi</option>
+  <option value="Lahore">Lahore</option>
+</select>
+<script>
+document.getElementById("city").addEventListener("change", (e) => {
+  console.log("You selected: " + e.target.value);
+});
+</script> */
+
+// 10 [Event delegation (parent ke through child handle)]
+/* <ul id="list">
+  <li>Apple</li>
+  <li>Mango</li>
+  <li>Banana</li>
+</ul>
+<script>
+document.getElementById("list").addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    alert("You clicked: " + e.target.innerText);
+  }
+});
+</script> */
+
+// 🖱️ Mouse Events
+// 1. click
+// element par mouse click hone par fire hota hai.
+// 👉 Example: button dabana.
+
+// 2. dblclick
+// mouse double click par.
+// 👉 Example: text edit mode open.
+
+// 3. mouseover
+// mouse pointer element ke upar aate hi.
+// 👉 Example: hover effect ya tooltip show.
+
+// 4. mouseout
+// mouse pointer element se bahar nikalte hi.
+// 👉 Example: hover effect hatana, tooltip hide.
+
+// 5. contextmenu
+// right-click hone par.
+// 👉 Example: custom context menu show.
+
+// ⌨️ Keyboard Events
+// 6. keydown
+// key press hone ke turant baad fire hota hai.
+// 👉 Example: shortcuts, Enter detect karna.
+
+// 7. keyup
+// jab key release hoti hai.
+// 👉 Example: typing ke baad live validation.
+
+// 8. keypress (old, ab kam use hota hai)
+// jab printable key press hoti hai.
+// 👉 Example: character logging.
+
+// 📝 Form Events
+// 9. input
+// text field ki value har character par update hoti hai.
+// 👉 Example: live search, password strength.
+
+// 10. change
+// input ki value tab trigger hoti hai jab focus lose hone ke baad change confirm ho jaye.
+// 👉 Example: dropdown, checkbox, radio buttons.
+
+// 11. submit
+// form submit hone par.
+// 👉 Example: validation aur data send karna.
+
+// 12. focus
+// jab input field active ho jaye (cursor andar ho).
+// 👉 Example: highlight ya help text show karna.
+
+// 13. blur
+// jab input field se cursor bahar nikal jaye.
+// 👉 Example: field validate karna.
+
+// 🪟 Window/Document Events
+// 14. resize
+// jab window ka size change hota hai.
+// 👉 Example: responsive design adjust karna.
+
+// 15. scroll
+// jab user page scroll kare.
+// 👉 Example: sticky navbar, infinite scroll, animations.
