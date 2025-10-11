@@ -5888,8 +5888,6 @@ document.getElementById("list").addEventListener("click", (e) => {
 // Design patterns: Understand common software design patterns (e.g., Module, Singleton) to write clean, modular, and maintainable code.
 // Testing and debugging: Integrate testing into your workflow and use debugging tools effectively to write more reliable code. 
 
-// ----------------------------
-
 // =================== Palindrome ======================
 
 // function isPalindrome(string) {
@@ -5988,27 +5986,26 @@ document.getElementById("list").addEventListener("click", (e) => {
 
 // 3) Example with async/await (Best & Modern)
 
-function fetchUser() {
+// function fetchUser() {
 
-  return new Promise((resolve) => {
+//   return new Promise((resolve) => {
 
-    setTimeout(() => {
-      resolve({ name: "Hasnain", age: 22 });
-    }, 2000);
+//     setTimeout(() => {
+//       resolve({ name: "Hasnain", age: 22 });
+//     }, 2000);
 
-  });
+//   });
 
-}
+// }
 
-async function showUser() {
-  console.log("Loading user...");
-  const user = await fetchUser();
-  console.log("User loaded:", user);
-}
+// async function showUser() {
+//   console.log("Loading user...");
+//   const user = await fetchUser();
+//   console.log("User loaded:", user);
+// }
 
-showUser();
-console.log("Other code continues...");
-
+// showUser();
+// console.log("Other code continues...");
 
 // 🔸 Output:
 
@@ -6047,11 +6044,6 @@ console.log("Other code continues...");
 
 // Length property
 // arr.length → total elements
-
-// ----------------------------
-
-// ----------------------------
-// ----------------------------
 
 // ------------ Asynchronous JavaScript ------------
 
@@ -6144,5 +6136,76 @@ console.log("Other code continues...");
 // ------------ Modules ------------
 
 
+
+
+
+// ==============<<< ES6 features >>>==============
+
+// ES6 (ECMAScript 2015) introduced significant enhancements to JavaScript,
+// including let and const for variable declarations, arrow functions with
+// concise syntax, template literals for string interpolation, destructuring
+// assignment, classes, modules (import/export), Promises and async/await for 
+// handling asynchronous operations, and new data structures like Map and Set.
+// These features make JavaScript more readable, efficient, and better suited
+// for modern development.  
+
+// Here's a breakdown of key ES6 features:
+// let and const: Introduced block-scoped variable declarations, replacing var for better scope management and to define constants, respectively. 
+
+// Arrow Functions: Provided a shorter syntax for writing functions and bound this lexically, improving code conciseness. 
+// Template Literals: Enabled string interpolation using backticks (`` ` ``) to embed expressions, replacing the cumbersome + operator for string concatenation. 
+
+// Destructuring Assignment: Allowed for easier extraction of values from arrays or objects into distinct variables using pattern matching. 
+// Rest Parameters: Collected multiple function arguments into a single array. 
+
+// Spread Operator (...): Expanded elements of an array or object into a place where multiple arguments or elements are expected. 
+// Classes: Introduced a cleaner syntax for defining classes and constructors, a syntactic sugar over JavaScript's prototype-based object-oriented programming. 
+
+// Modules: Enabled splitting applications into reusable files with import and export statements. 
+// Promises and Async/Await: Provided built-in support for handling asynchronous operations in a more structured and synchronous-like manner. 
+
+// Enhanced Object Literals: Offered shorthand syntax for defining properties and methods within objects. 
+// Default Parameters: Allowed setting default values for function parameters, simplifying function calls. 
+
+// Iterators and Generators: Introduced mechanisms for custom iteration logic over collections. 
+// Map and Set: Added new built-in data structures for handling collections of data. 
+
+// ------------ Let and const ------------
+
+
+
+// ------------ Arrow functions ------------
+
+
+
+// ------------ Template literals ------------
+
+
+
+// ------------ Destructuring assignment ------------
+
+
+
+// ------------ Spread operators ------------
+
+
+
+// ------------ Classes ------------
+
+
+
+// ------------ Promises ------------
+
+
+
+// ------------ Modules ------------
+
+
+
+// ------------ Default parameters ------------
+
+
+
+// ------------ Enhanced object literals ------------
 
 
