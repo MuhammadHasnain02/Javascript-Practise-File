@@ -19,7 +19,6 @@
 // Syntax:
 // let name = "Hasnain";
 
-
 // Important:
 // String always quotes me hoti hai " " ya ' '.
 // Template literals: backticks (`Hello ${name}`).
