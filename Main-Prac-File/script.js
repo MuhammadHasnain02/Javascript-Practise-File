@@ -3045,7 +3045,7 @@
 // 9 [Typing Effect (1 letter at a time)]
 /* <p id="typeText"></p>
 <script>
-  const message = "Welcome, Hasnain bhai! 😄 This text is typing...";
+  const message = "Welcome, Hasnain bhai!  This text is typing...";
   let i = 0;
 
   function typeWriter() {
@@ -4303,6 +4303,9 @@ setTimeout(() => inp.removeAttribute("disabled"), 3000); // enable after 3s
 // hasAttribute(attrName) → check karne ke liye attribute exist karta hai ya nahi
 // attributes → ek NamedNodeMap return karta hai jisme saare attribute names aur values hoti hain
 
+// let a = document.createElement("p")
+// console.log(a.attributes);
+
 // 1 [Get attribute name and value]
 /* <a id="myLink" href="https://google.com" target="_blank">Google</a>
 <script>
@@ -4414,10 +4417,12 @@ ul.appendChild(li); // Mango last me add
 </script> */
 
 // 2 [Insert before specific node]
+// let ul = document.createElement("ul");
 // let orange = document.createElement("li");
 // orange.innerText = "Orange";
 // let firstItem = ul.firstElementChild;
 // ul.insertBefore(orange, firstItem); // Orange Apple se pehle
+// console.log(ul);
 
 // 3 [Prepend (start me insert karna)]
 // let banana = document.createElement("li");
@@ -6195,6 +6200,92 @@ document.getElementById("list").addEventListener("click", (e) => {
 
 // ------------ Promises ------------
 
+// function fetchData(name , time) {
+
+//     return new Promise((res) => {
+//         console.log(`⏳ ${name}...`)
+//         setTimeout(() => res(`${name} done!`), time)
+//     })
+
+// }
+
+// async function downloadFile() {
+
+//     for (let i = 1; i <= 10; i++) {
+//         await new Promise((res) => setTimeout(res, 500));
+//         console.log(`📥 Downloaded ${i * 10}%`);
+
+//         if (i === 9) {
+//             await new Promise((res) => setTimeout(res, 1000));
+//             console.log(`📥 Downloaded 99%`);
+//             await new Promise((res) => setTimeout(res, 5000));
+//         }
+//     }
+
+//   console.log("✅ Download complete!");
+
+// }
+
+// downloadFile();
+
+// -----------------------------------------
+
+// function fetchData(name , time) {
+
+//     return new Promise((res) => {
+//         console.log(`⏳ ${name}...`)
+//         setTimeout(() => res(`${name} done!`), time)
+//     })
+
+// }
+
+// async function process() {
+//     // await fetchData("Connecting to Server" , 1000)
+//     // await fetchData("Fetching Data" , 1500)
+//     // await fetchData("Rendering UI" , 2000)
+
+//     let [res1 , res2 , res3] = await Promise.all([
+//         fetchData("Connecting to Server" , 1000),
+//         fetchData("Fetching Data" , 1500),
+//         fetchData("Rendering UI" , 2000)
+//     ])
+
+//     console.log("res1:", res1);
+//     console.log("res2:", res2);
+//     console.log("res3:", res3);
+// }
+
+// process()
+
+// -----------------------------------------
+
+// function fakeAPI(name) {
+//   return new Promise((resolve) => {
+//     let delay = Math.floor(Math.random() * 3000) + 1000;
+//     setTimeout(() => resolve(`${name} data fetched in ${delay}ms`), delay);
+//   });
+// }
+
+// const tasks = [
+//   () => fakeAPI("Task 1"),
+//   () => fakeAPI("Task 2"),
+//   () => fakeAPI("Task 3")
+// ];
+
+// async function runQueue() {
+//   for (let task of tasks) {
+//     let res = await task();
+//     console.log(res);
+//   }
+//   console.log("🚀 Queue finished!");
+// }
+
+// runQueue();
+
+// -----------------------------------------
+
+
+
 
 
 // ------------ Modules ------------
@@ -6208,3 +6299,236 @@ document.getElementById("list").addEventListener("click", (e) => {
 // ------------ Enhanced object literals ------------
 
 
+// ------------ Typical Questions ------------
+
+// console.log(typeof null);
+// console.log(typeof NaN);
+// console.log(typeof typeof 1);
+
+// console.log("5" - "2");
+// console.log(2 + "2" - 1);
+
+// console.log(0.1 + 0.2 === 0.3);
+// console.log([] == 0);
+
+// console.log([1,2,3] + [4,5,6]);
+// console.log(true + true + false);
+
+// async function test(){
+//   return 5;
+// }
+// console.log(test());
+
+// console.log([] + {});
+// console.log({} + []);
+
+// console.log([] + String);
+// console.log({} + String);
+
+// console.log([] + Number);
+// console.log({} + Number);
+
+// console.log([] + Boolean);
+// console.log({} + Boolean);
+
+// console.log('5' + + '2');
+// console.log('5' * + '2');
+// console.log('5' / + '2');
+// console.log('5' % + '2');
+// console.log("=============");
+// console.log('5' + - '2');
+// console.log('5' * - '2');
+// console.log('5' / - '2');
+// console.log('5' % - '2');
+
+// console.log(a);
+// var a = 1
+
+// console.log(a);
+// let a = 1
+
+// console.log(a);
+// const a = 1
+
+// console.log("A");
+// setTimeout(() => console.log("B"), 0);
+// Promise.resolve().then(() => console.log("C"));
+// console.log("D");
+
+// async function test() {
+//   console.log(1);
+//   await console.log(2);
+//   console.log(3);
+// }
+// test();
+// console.log(4);
+
+// Promise.resolve()
+//   .then(() => console.log("A"))
+//   .then(() => console.log("B"))
+//   .then(() => console.log("C"));
+
+// console.log("start");
+// setTimeout(() => console.log("timeout"), 0);
+// Promise.resolve().then(() => console.log("promise"));
+// console.log("end");
+
+// async function foo() {
+//   return 1;
+// }
+// foo().then(console.log);
+
+// async function f() {
+//   console.log("a");
+//   return Promise.resolve("b");
+// }
+// f().then(console.log);
+// console.log("c");
+
+// console.log("1");
+// setTimeout(() => console.log("2"), 100);
+// setTimeout(() => console.log("3"), 0);
+// Promise.resolve().then(() => console.log("4"));
+// console.log("5");
+
+// async function test() {
+//   return await Promise.resolve("Done");
+// }
+// console.log(await test());
+
+// Promise.reject("Error").catch(e => console.log("Caught"))
+//   .then(() => console.log("Then"));
+
+// async function f(){
+//   throw new Error("Oops");
+// }
+// f().catch(e => console.log("Handled"));
+
+// const p = new Promise(res => res("Hi"));
+// p.then(() => console.log("A"));
+// console.log("B");
+
+// setTimeout(() => console.log('X'), 0);
+// Promise.resolve().then(() => console.log('Y'));
+// queueMicrotask(() => console.log('Z'));
+// console.log('W');
+
+// console.log(1);
+// setTimeout(() => console.log(2));
+// Promise.resolve().then(() => console.log(3)).then(() => console.log(4));
+// console.log(5);
+
+// async function a() {
+//   console.log("A");
+//   await b();
+//   console.log("B");
+// }
+// async function b() {
+//   console.log("C");
+// }
+// a();
+// console.log("D");
+
+// Promise.resolve().then(() => {
+
+//   console.log(1);
+//   throw new Error();
+
+// }).catch(() => console.log(2)).then(() => console.log(3))
+
+// let x = 10;
+// setTimeout(() => {
+//   x += 1;
+//   console.log(x);
+// }, 0);
+// x += 5;
+// console.log(x);
+
+// async function f(){
+//   console.log("A");
+//   await Promise.resolve();
+//   console.log("B");
+// }
+// f();
+// console.log("C");
+
+// Promise.resolve().then(() => console.log("1"));
+// Promise.resolve().then(() => console.log("2"));
+// setTimeout(() => console.log("3"), 0);
+// console.log("4");
+
+// let promise = new Promise(res => res(10));
+// promise.then(x => x * 2).then(x => console.log(x));
+
+// async function delay() {
+//   return new Promise(res => setTimeout(() => res("Done!"), 1000));
+// }
+// async function run() {
+//   const msg = await delay();
+//   console.log(msg);
+// }
+// run();
+
+// let a = (1, 2, 3);
+// console.log(a);
+
+// for(let i=0; i<3; i++){
+//   setTimeout(()=>console.log(i),1000);
+// }
+
+// for(var i=0; i<3; i++){
+//   setTimeout(()=>console.log(i),1000);
+// }
+
+// let num = 5;
+// if(num == "5") console.log("Loose");
+// if(num === "5") console.log("Strict");
+
+// let score = 70;
+// if (score > 90) console.log("A");
+// else if (score > 60) console.log("B");
+// else console.log("C");
+
+// for(let i = 1; i <= 5; i++){
+
+//   if (i == 3) continue;
+//   console.log(i);
+
+// }
+
+// console.log("A");
+// setTimeout(()=>console.log("B"),0);
+// Promise.resolve().then(()=>console.log("C"));
+// console.log("D");
+
+// let arr = [1,2,3];
+// arr.pop();
+// arr.shift();
+// console.log(arr);
+
+// let nums = [10,20,30];
+// nums.map((n,i)=>console.log(i,n*2));
+
+// let a = [1,2,3];
+// console.log(a.includes(2));
+
+// let data = {name:"Ali", age:20};
+// console.log(Object.keys(data));
+
+// let x = {a:1};
+// let y = {...x};
+// y.a = 5;
+// console.log(x.a);
+
+// let str = "hello";
+// console.log(str.split("").reverse().join(""));
+
+// let arr = [5,1,9,3];
+// console.log(Math.max(...arr));
+
+// let str = "Hasnain";
+// let count = (str.match(/[aeiou]/gi) || []).length; // g (Global flag) and i (Case-insensitive flag) both lowercase and uppercase
+// console.log(count);
+
+// const obj = {a:1};
+// obj = {b:2}; // TypeError
